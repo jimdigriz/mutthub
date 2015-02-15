@@ -50,8 +50,6 @@ You should copy `mutt/accounts/_template` to `mutt/accounts/main` as you see fit
 
 ## offlineimap
 
-Replace `$USER` with your username below:
-
     $ touch ~/.offlineimaprc
     $ chmod 600 ~/.offlineimaprc
     $ utils/macros offlineimaprc >> ~/.offlineimaprc
