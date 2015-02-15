@@ -1,0 +1,52 @@
+# :hook folder-hook . source "$HOME/.mutt/accounts/_default"
+
+set imap_idle
+
+unset folder
+unset spoolfile
+unset record
+unset postponed
+
+unset hostname
+unset hidden_host
+unset use_domain
+
+set sendmail_wait=0
+set sendmail="lbdbwrap /usr/sbin/sendmail -oem -oi"
+unset dsn_notify
+unset dsn_return
+
+set header_cache=`DIR=${XDG_CACHE_HOME:-$HOME/.cache}/mutt/headers; mkdir -p "$DIR"; echo $DIR`
+
+set query_command="env METHODS='m_inmail m_vcf m_muttalias' MUTTALIAS_FILES='aliases' VCF_FILES='`find $HOME/.vcards -type f`' lbdbq %s | tail -n +2 | tac"
+
+set realname="%name%"
+
+set envelope_from=yes
+unset envelope_from_address
+
+unalternates *
+
+unmy_hdr *
+
+# if you are out of the office, I really don't care
+# http://msdn.microsoft.com/en-us/library/ee219609(v=exchg.80).aspx
+my_hdr X-Auto-Response-Suppress: OOF
+
+set sig_dashes
+# eg. ROLE=' - Head of Awesomeness'
+set signature="echo '\
+% ( minwidth\n\
+%name%\n\
+% | minwidth\n\
+\$ROLE\n\
+% )\n\
+\n\
+% ( minwidth\n\
+.sigmonster says:\n\
+% | exec\n\
+fortune -n61 -s | sed '/^\$/d'\n\
+% )' | env ROLE='' signify --input=- |"
+
+# reset the spam/ham hooks
+macro index,pager S <space>

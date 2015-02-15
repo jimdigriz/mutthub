@@ -1,0 +1,75 @@
+unset beep
+  set certificate_file="$HOME/.mutt/certificates"
+unset confirmappend
+  set delete=yes
+  set fast_reply
+  set include=yes
+  set ispell="aspell -e -c"
+  set mbox_type=Maildir
+  set mime_forward=ask-no
+  set pager_context=1
+  set pager_index_lines=6
+  set pager_stop=yes
+  set postpone=ask-no
+  set print=ask-yes
+  set print_command="a2ps -1gEmail --borders=no --strip=3"
+  set quit=ask-yes
+  set reply_to=yes
+unset sidebar_visible
+  set sleep_time=0
+  set sort=threads
+  set text_flowed
+  set tilde
+  set read_inc=2000
+  set time_inc=500
+  set write_inc=100
+
+  set editor="%editor%"
+  set visual="%visual%"
+  #set editor="trim-email-signature %s > %s.new && mv %s.new %s && $my_editor -t %s"
+
+message-hook ~A		'ignore *'
+message-hook ~A		'unignore date from to cc bcc subject x-wormnet-spam-score'
+# I do not need to see these in from emails from myself
+message-hook !~P	'unignore openpgp organization user-agent x-mailer x-mda-error'
+hdr_order date from openpgp organization reply-to to cc bcc subject user-agent x-mailer x-wormnet-spam-score
+
+alternative_order text/plain text/enriched text/html
+mime_lookup application/octet-stream
+auto_view text/enriched
+auto_view text/html
+auto_view application/msword
+
+bind index	<tab>		next-unread
+bind attach	<return>	view-mailcap
+
+## some handy features
+# helpful help - http://mark.stosberg.com/Tech/mutt.html
+macro generic,index,pager <f1> "<enter-command>unset wait_key<enter><shell-escape>run-mailcap /usr/share/doc/mutt/html/index.html<enter><enter-command>set wait_key<enter>" "Show Mutt documentation"
+# colour
+color normal		white black
+color attachment	brightyellow black
+color hdrdefault	cyan black
+color indicator		black cyan
+color markers		brightred black
+color quoted		green black
+color signature		cyan black
+color status		brightgreen blue
+color tilde		blue black
+color tree		red black
+# t-prot - autoloads on Debian
+source "[ \"$(uname -s)\" = \"Darwin\" ] && { mkdir -p $HOME/.mutt/mlfooters $HOME/.mutt/adfooters; cat /opt/local/share/t-prot/muttrc.t-prot; } || echo |"
+# url(view|scan)
+macro pager \cb '<enter-command>unset wait_key<enter><pipe-entry>[ -n "$(which urlscan)" ] && urlscan || urlview<enter><enter-command>set wait_key<enter>' 'Follow links with urlview'
+
+unmailboxes *
+
+# account hooks
+unhook *
+source "find \"$HOME/.mutt/accounts\" -type f | xargs -n1 sed -n '/^# :hook\\(\\[.*`hostname`.*\\]\\)\\?[[:space:]]/ s/# :hook[^[:space:]]*[[:space:]]// p' |"
+
+# handy limit
+macro index L <limit>~N|~U|~F|~d<7d<enter>
+
+# Last, but not least, get mutt to display its version on startup.
+push <show-version>
