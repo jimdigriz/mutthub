@@ -4,12 +4,17 @@ This project has the moving parts that make up how I handle email, others may fi
 
  * notmuch support
  * background smtp
- * mailing list handling - inc where server sends me another copy
+ * mailing list handling
+  * including the case where server sends me another copy as I am a member (Exchange...)
  * URL extract
  * address book
  * no work account on personal workstation
- * fail to send email, drops copy in INBOX due to Fcc, can we Fcc *after* sendmail, or bcc self better?
+ * failure to send email, still drops copy in INBOX due to Fcc, leading to dupes
+  * can we Fcc *after* sendmail?
+  * Bcc self a better option?
+  * does it matter once I do background smtp?
  * signature strip written in sed
+ * handle scoring
 
 # Preflight
 
