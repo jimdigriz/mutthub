@@ -42,7 +42,7 @@ You should copy `mutt/accounts/_template` to `mutt/accounts/main` as you see fit
     $ sudo cp lbdbwrap /usr/local/bin
     $ find mutt -type f -name '[_a-zA-Z0-9]*' ! -name '_template' | awk '{ printf "touch ~/.%s && chmod 600 ~/.%s && utils/macros %s >> ~/.%s\n", $1, $1, $1, $1 }' | xargs -I{} sh -c "{}"
 
-## msmtprc
+## msmtp
 
     $ touch ~/.msmtprc
     $ chmod 600 ~/.msmtprc
