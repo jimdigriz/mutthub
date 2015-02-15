@@ -30,7 +30,7 @@ As you amend the configuration files detailed below, you can use the `macros` to
 ## Debian
 
     $ sudo apt-get install -yy --no-install-recommends \
-    	mutt-patched notmuch-mutt msmtp aspell-en \
+    	mutt-patched notmuch-mutt msmtp-mta aspell-en \
     	runit offlineimap lbdb signify t-prot \
     	fortunes-min fortunes-bofh-excuses urlscan
 
