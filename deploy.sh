@@ -22,7 +22,7 @@ _offlineimap () {
 	cp -r runit/offlineimap ~/service
 	echo "$HOME" > ~/service/offlineimap/env/HOME
 
-	sv force-shutdown ~/service/offlineimap >/dev/null 2>/dev/null
+	sv -w 30 force-shutdown ~/service/offlineimap >/dev/null 2>/dev/null
 }
 
 echo installing mutthub

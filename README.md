@@ -84,7 +84,7 @@ You will need to run the following for a first time install:
 
 This will start offlineimap almost instantly, but for a first run you may wish to run it all in debug mode:
 
-    sv force-stop ~/service/offlineimap
+    sv -w 30 force-stop ~/service/offlineimap
     env DEBUG=1 sh -x ~/service/offlineimap/run
 
 Optionally you may want to use TTYUI due to rendering glitches, so run:
