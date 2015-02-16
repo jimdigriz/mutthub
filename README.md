@@ -76,3 +76,7 @@ This will start offlineimap almost instantly, but for a first run you may wish t
 
     sv force-stop ~/service/offlineimap
     env DEBUG=1 sh -x ~/service/offlineimap/run
+
+Optionally you may want to use TTYUI due to rendering glitches, so run:
+
+    env DEBUG=1 UI=TTYUI sh -x ~/service/offlineimap/run
