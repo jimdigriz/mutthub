@@ -713,7 +713,6 @@ localrepository = local.digriz.alex
 remoterepository = remote.digriz.alex
 autorefresh = 5
 quick = 3
-postsynchook = notmuch new
 
 [Repository local.digriz.alex]
 type = Maildir
@@ -735,7 +734,6 @@ localrepository = local.fastmail.jimdigriz
 remoterepository = remote.fastmail.jimdigriz
 autorefresh = 5
 quick = 3
-postsynchook = notmuch new
 
 [Repository local.fastmail.jimdigriz]
 type = Maildir
@@ -757,7 +755,6 @@ localrepository = local.telemetry.aclouter
 remoterepository = remote.telemetry.aclouter
 autorefresh = 5
 quick = 3
-postsynchook = notmuch new
 
 [Repository local.telemetry.aclouter]
 type = Maildir
