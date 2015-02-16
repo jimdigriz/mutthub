@@ -728,6 +728,7 @@ sslcacertfile = /etc/ssl/certs/WombleNet_Certificate_Authority.pem
 maxconnections = 2
 idlefolders = ['INBOX']
 holdconnectionopen = yes
+folderfilter = lambda foldername: foldername not in ['INBOX/Trash', 'INBOX/Deleted Items', 'INBOX/Archive', 'INBOX/soas']
 
 [Account fastmail.jimdigriz]
 localrepository = local.fastmail.jimdigriz
@@ -749,6 +750,7 @@ sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 maxconnections = 2
 idlefolders = ['INBOX']
 holdconnectionopen = yes
+folderfilter = lambda foldername: foldername not in ['INBOX.Trash', 'INBOX.Deleted Items', 'INBOX.Archive']
 
 [Account telemetry.aclouter]
 localrepository = local.telemetry.aclouter
