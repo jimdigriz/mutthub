@@ -9,13 +9,13 @@ _mutt () {
 }
 
 _msmtp () {
-	touch ~/.msmtprc
+	: > ~/.msmtprc
 	chmod 600 ~/.msmtprc
 	utils/macros msmtprc >> ~/.msmtprc
 }
 
 _offlineimap () {
-	touch ~/.offlineimaprc
+	: > ~/.offlineimaprc
 	chmod 600 ~/.offlineimaprc
 	utils/macros offlineimaprc >> ~/.offlineimaprc
 	mkdir -p ~/service
