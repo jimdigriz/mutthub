@@ -22,16 +22,23 @@ You will need to [have git installed on your workstation](http://git-scm.com/boo
 
     $ git clone https://github.com/jimdigriz/mutthub.git
     $ cd mutthub
-    
+ 
     $ cp example.macros macros
 
 As you amend the configuration files detailed below, you can use the `macros` to handle substitutions for you.
+
+We also need a recent version of [offlineimap](http://offlineimap.org/):
+
+    $ git clone https://github.com/OfflineIMAP/offlineimap.git
+    $ cd offlineimap
+    $ make -C offlineimap
+    $ ( cd offlineimap && python setup.py install )
 
 ## Debian
 
     $ sudo apt-get install -yy --no-install-recommends \
     	mutt-patched notmuch-mutt msmtp-mta aspell-en \
-    	runit offlineimap lbdb signify t-prot \
+    	runit lbdb signify t-prot \
     	fortunes-min fortunes-bofh-excuses urlscan
 
 # Configuration
