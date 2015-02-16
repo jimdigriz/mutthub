@@ -70,7 +70,7 @@ You will need to run the following for a first time install:
     
     $ sudo cp lbdbwrap /usr/local/bin
     
-    $ sudo mkdir -p /etc/sv/runsvdir-$USER
+    $ sudo mkdir /etc/sv/runsvdir-$USER
     $ sudo touch /etc/sv/runsvdir-$USER/run
     $ sudo chmod +x /etc/sv/runsvdir-$USER/run
     $ cat <<EOF | sudo cat >> /etc/sv/runsvdir-$USER/run
