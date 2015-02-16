@@ -7,14 +7,14 @@ unset spoolfile
 unset record
 unset postponed
 
-unset hostname
-unset hidden_host
-unset use_domain
+set hostname="`hostname -s`.local"
+reset hidden_host
+reset use_domain
 
 set sendmail_wait=0
 set sendmail="lbdbwrap /usr/sbin/sendmail -oem -oi"
-unset dsn_notify
-unset dsn_return
+reset dsn_notify
+reset dsn_return
 
 set header_cache=`DIR=${XDG_CACHE_HOME:-$HOME/.cache}/mutt/headers; mkdir -p "$DIR"; echo $DIR`
 

@@ -8,6 +8,9 @@ set postponed=!/Drafts
 
 set from=%telemetry.email%
 
+set hostname="`hostname -s`.telemetry.com"
+set hidden_host=yes
+
 alias me %telemetry.email% (%name%)
 alternates (aclouter|ac33)@telemetry\.com
 
