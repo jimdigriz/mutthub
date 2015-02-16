@@ -32,7 +32,7 @@
 # This specifies where offlineimap is to store its metadata.
 # This directory will be created if it does not already exist.
 
-#metadata = ~/.offlineimap
+metadata = ~/Mail/.offlineimap
 
 # This variable specifies which accounts are defined.  Separate them
 # with commas.  Account names should be alphanumeric only.
