@@ -66,6 +66,8 @@ Edit the end of the file as you see fit.
 
 You will need to run the following for a first time install:
 
+    $ mkdir ~/.vcards
+    
     $ sudo cp lbdbwrap /usr/local/bin
     
     $ sudo mkdir -p /etc/sv/runsvdir-$USER
