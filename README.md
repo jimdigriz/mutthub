@@ -34,7 +34,7 @@ As you amend the configuration files detailed below, you can use the `macros` to
     	runit offlineimap lbdb signify t-prot \
     	fortunes-min fortunes-bofh-excuses urlscan
 
-# Deploy
+# Configuration
 
 ## mutt
 
@@ -42,25 +42,23 @@ You should copy `mutt/accounts/_template` to `mutt/accounts/main` as you see fit
 
 **N.B.** pay attention to the `# :hook` commands at the top of those files, they do the plumbing
 
-    $ mkdir -p ~/.mutt/accounts
-    $ touch ~/.mutt/aliases ~/.mutt/certificates
-    $ sudo cp lbdbwrap /usr/local/bin
-    $ find mutt -type f -name '[_a-zA-Z0-9]*' ! -name '_template' | awk '{ printf "touch ~/.%s && chmod 600 ~/.%s && utils/macros %s >> ~/.%s\n", $1, $1, $1, $1 }' | xargs -I{} sh -c "{}"
+## offlineimap
+
+Edit the end of the file as you see fit.
 
 ## msmtp
 
-    $ touch ~/.msmtprc
-    $ chmod 600 ~/.msmtprc
-    $ utils/macros msmtprc >> ~/.msmtprc
+Edit the end of the file as you see fit.
 
-## offlineimap
+# Deploy
 
-    $ touch ~/.offlineimaprc
-    $ chmod 600 ~/.offlineimaprc
-    $ utils/macros offlineimaprc >> ~/.offlineimaprc
-    $ mkdir ~/service
-    $ cp -r runit/offlineimap ~/service
-    $ echo "$HOME" > ~/service/offlineimap/env/HOME
+    $ ./deploy.sh
+
+## First Time
+
+You will need to run the following for a first time install:
+
+    $ sudo cp lbdbwrap /usr/local/bin
     
     $ sudo mkdir -p /etc/sv/runsvdir-$USER
     $ sudo touch /etc/sv/runsvdir-$USER/run
