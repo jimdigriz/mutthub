@@ -7,7 +7,7 @@ unset spoolfile
 unset record
 unset postponed
 
-set hostname="`hostname -s`.local"
+set hostname="`hostname -s`.digriz.org.uk"
 reset hidden_host
 reset use_domain
 
