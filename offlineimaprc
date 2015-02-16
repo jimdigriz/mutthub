@@ -789,6 +789,7 @@ type = IMAP
 remotehost = %telemetry.imap%
 remoteuser = %telemetry.email%\\sysadmin@telemetry.com
 remotepass = %telemetry.password%
+auth_mechanisms = LOGIN
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 maxconnections = 2
