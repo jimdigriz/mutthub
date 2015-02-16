@@ -8,6 +8,9 @@ set postponed=!.Drafts
 
 set from=%digriz.email%
 
+set use_envelope_from=yes
+set envelope_from_address=%digriz.email%
+
 alias me %digriz.email% (%name%)
 alternates alex([\-+][a-z]+)@digriz\.org\.uk
 

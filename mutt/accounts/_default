@@ -22,7 +22,7 @@ set query_command="env METHODS='m_inmail m_vcf m_muttalias' MUTTALIAS_FILES='ali
 
 set realname="%name%"
 
-set envelope_from=yes
+reset use_envelope_from
 unset envelope_from_address
 
 unalternates *

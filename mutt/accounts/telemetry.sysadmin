@@ -10,7 +10,9 @@ set postponed=!/Drafts
 
 alternates (root|sysadmin)@(telemetry\.com|teleng\.net|jdproject\.com|jdproject\.net)
 
-set from=sysadmin@telemetry.com
+set use_envelope_from=yes
+set envelope_from_address=%telemetry.email%
+
 alternates sysadmin@telemetry\.com
 
 set envelope_from_address=%telemetry.email%
