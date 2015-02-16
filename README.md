@@ -15,6 +15,7 @@ This project has the moving parts that make up how I handle email, others may fi
   * does it matter once I do background smtp?
  * signature strip written in sed
  * handle scoring
+ * whilst composing an email, viewing attachments added breaks if the filename has spaces
 
 # Preflight
 
