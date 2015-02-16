@@ -71,3 +71,8 @@ You will need to run the following for a first time install:
     exec 2>&1
     exec chpst -u $USER runsvdir /home/$USER/service
     EOF
+
+This will start offlineimap almost instantly, but for a first run you may wish to run it all in debug mode:
+
+    sv force-stop ~/service/offlineimap
+    env DEBUG=1 sh -x ~/service/offlineimap/run
