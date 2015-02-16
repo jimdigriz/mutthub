@@ -1,0 +1,14 @@
+# :hook folder-hook "$HOME/Mail/fastmail.digriz" source "$HOME/.mutt/accounts/fastmail"
+# :hook mailboxes "$HOME/Mail/fastmail.digriz/INBOX"
+
+set folder="$HOME/Mail/fastmail.jimdigriz"
+set spoolfile=+INBOX
+set record=!
+set postponed=!.Drafts
+
+set from=%fastmail.email%
+
+alias me %fastmail.email% (%name%)
+alternates jimdigriz([\-+][a-z]+)@imapmail\.org
+
+macro index,pager S "<save-message>!.Junk Mail<enter>" "File as Spam"

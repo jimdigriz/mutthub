@@ -1,7 +1,4 @@
 .*
 !.gitignore
 
-mutt/accounts/*
-!mutt/accounts/_*
-
 macros
