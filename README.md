@@ -89,4 +89,4 @@ This will start offlineimap almost instantly, but for a first run you may wish t
 
 Optionally you may want to use TTYUI due to rendering glitches, so run:
 
-    env DEBUG=1 UI=TTYUI sh -x ~/service/offlineimap/run
+    env DEBUG=1 UI=ttyui sh -x ~/service/offlineimap/run
