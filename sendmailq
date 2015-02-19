@@ -22,6 +22,33 @@ log () {
 	cat >> "$HOME/.$SELF.log"
 }
 
+queue () {
+	BASE="$(mktemp --tmpdir="$SPOOL" XXXXXXXX)"
+
+	cleanup () {
+		find "$SPOOL" -maxdepth 1 -type f -name "${BASE}*" -delete
+	}
+	trap cleanup 0
+
+	echo "queuing message $(basename "$BASE"): $@" | log
+
+	touch "$BASE.msg.tmp"
+	chmod 600 "$BASE.msg.tmp"
+	cat >> "$BASE.msg.tmp"
+	mv "$BASE.msg.tmp" "$BASE.msg"
+
+	touch "$BASE.arg.tmp"
+	chmod 600 "$BASE.arg.tmp"
+	for A in "$@"; do
+		printf "%s\0" "$A" >> "$BASE.arg.tmp"
+	done
+	mv "$BASE.arg.tmp" "$BASE.arg"
+
+	rm "$BASE"
+
+	trap - 0
+}
+
 online () {
 	RC=0
 	# look for example.com so DNS has to succeed too
@@ -31,30 +58,7 @@ online () {
 	[ $RC -lt 2 ] && return 0 || return 1
 }
 
-BASE="$(mktemp --tmpdir="$SPOOL" XXXXXXXX)"
-
-cleanup () {
-	find "$SPOOL" -maxdepth 1 -type f -name "${BASE}*" -delete
-}
-trap cleanup 0
-
-echo "queuing message $(basename "$BASE"): $@" | log
-
-touch "$BASE.msg.tmp"
-chmod 600 "$BASE.msg.tmp"
-cat >> "$BASE.msg.tmp"
-mv "$BASE.msg.tmp" "$BASE.msg"
-
-touch "$BASE.arg.tmp"
-chmod 600 "$BASE.arg.tmp"
-for A in "$@"; do
-	printf "%s\0" "$A" >> "$BASE.arg.tmp"
-done
-mv "$BASE.arg.tmp" "$BASE.arg"
-
-rm "$BASE"
-
-trap - 0
+[ $# -ne 0 ] && queue
 
 if ! online; then
 	echo "currently offline" | log
