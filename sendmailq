@@ -1,0 +1,105 @@
+#!/bin/sh
+
+# TODO
+# - *BSD compat for
+# - add watchdot, using timeout (*BSD?), or SIGALRM?
+
+set -eu
+
+SELF="$(basename "$0")"
+
+SPOOL="$HOME/.$SELF"
+LOG="$HOME/.$SELF.log"
+
+mkdir -p "$SPOOL"
+touch "$LOG.sendmailq.log"
+
+log () {
+	exec 8>> "$LOG"
+	flock 8
+
+	printf "$(date +'%b %e %H:%M:%S') [$$]: " >> "$HOME/.$SELF.log"
+	cat >> "$HOME/.$SELF.log"
+}
+
+online () {
+	RC=0
+	# look for example.com so DNS has to succeed too
+	ping6 -q -n -w 4 -c 1 -t 1 example.com >/dev/null 2>/dev/null || RC=$?
+	# check for >=2 as it implies there is no networking
+	[ $RC -lt 2 ] || ping -q -n -w 4 -c 1 -t 1 example.com >/dev/null 2>/dev/null || RC=$?
+	[ $RC -lt 2 ] && return 0 || return 1
+}
+
+BASE="$(mktemp --tmpdir="$SPOOL" XXXXXXXX)"
+
+cleanup () {
+	find "$SPOOL" -maxdepth 1 -type f -name "${BASE}*" -delete
+}
+trap cleanup 0
+
+echo "queuing message $(basename "$BASE"): $@" | log
+
+touch "$BASE.msg.tmp"
+chmod 600 "$BASE.msg.tmp"
+cat >> "$BASE.msg.tmp"
+mv "$BASE.msg.tmp" "$BASE.msg"
+
+touch "$BASE.arg.tmp"
+chmod 600 "$BASE.arg.tmp"
+for A in "$@"; do
+	printf "%s\0" "$A" >> "$BASE.arg.tmp"
+done
+mv "$BASE.arg.tmp" "$BASE.arg"
+
+rm "$BASE"
+
+trap - 0
+
+if ! online; then
+	echo "currently offline" | log
+	exit 0
+fi
+
+echo "processing queue" | log
+
+for FILE in $(find "$SPOOL" -maxdepth 1 -name '*.arg' -printf '%T@ %p\n' | sed 's/\.arg//' | sort -k1,1nr | cut -d' ' -f2); do
+	F="$(basename "$FILE")"
+
+	echo "processing message: $F" | log
+
+	exec 9< "$FILE.arg"
+	if ! flock -n 9; then
+		echo "unable to lock '$F', skipping" | log
+		continue
+	fi
+
+	if ! test -f "$FILE.msg"; then
+		echo "orphaned mail with no message ('$F'), deleting" | log
+		cat "$FILE.arg" | xargs -0 echo "args:" | log
+		rm -f "$FILE.arg"
+		continue
+	fi
+
+	ARGS=$(cat "$FILE.arg" | tr -c -d '\0' | wc -c)
+	set -- /usr/sbin/sendmail
+	while [ $# -le $ARGS ]; do
+		set -- "$@" "$(cat "$FILE.arg" | cut -d '' -f$#)"
+	done
+
+	RC=0
+	"$@" < "$FILE.msg" || RC=$?
+	if [ $RC -ne 0 ]; then
+		echo "problem sending mail: $RC" | log
+		if ! online; then
+			echo "currently offline" | log
+			exit 0
+		fi
+
+		continue
+	fi
+
+	rm "$FILE.arg" "$FILE.msg"
+done
+
+exit 0

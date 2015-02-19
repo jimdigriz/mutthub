@@ -69,6 +69,7 @@ You will need to run the following for a first time install:
     $ mkdir ~/.vcards
     
     $ sudo cp lbdbwrap /usr/local/bin
+    $ sudo cp sendmailq /usr/local/bin
     
     $ sudo mkdir /etc/sv/runsvdir-$USER
     $ sudo touch /etc/sv/runsvdir-$USER/run
