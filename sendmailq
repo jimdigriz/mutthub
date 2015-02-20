@@ -58,7 +58,7 @@ online () {
 	[ $RC -lt 2 ] && return 0 || return 1
 }
 
-[ $# -ne 0 ] && queue
+[ $# -ne 0 ] && queue "$@"
 
 if ! online; then
 	echo "currently offline" | log
