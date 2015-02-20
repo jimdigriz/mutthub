@@ -74,12 +74,12 @@ for FILE in $(find "$SPOOL" -maxdepth 1 -name '*.arg' -printf '%T@ %p\n' | sed '
 
 	exec 9< "$FILE.arg"
 	if ! flock -n 9; then
-		echo "unable to lock '$F', skipping" | log
+		echo "unable to lock, skipping" | log
 		continue
 	fi
 
 	if ! test -f "$FILE.msg"; then
-		echo "orphaned mail with no message ('$F'), deleting" | log
+		echo "orphaned mail with no message, deleting" | log
 		cat "$FILE.arg" | xargs -0 echo "args:" | log
 		rm -f "$FILE.arg"
 		continue
@@ -104,6 +104,8 @@ for FILE in $(find "$SPOOL" -maxdepth 1 -name '*.arg' -printf '%T@ %p\n' | sed '
 	fi
 
 	rm "$FILE.arg" "$FILE.msg"
+
+	echo "sent" | log
 done
 
 exit 0
