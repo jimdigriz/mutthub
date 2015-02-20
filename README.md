@@ -16,6 +16,9 @@ This project has the moving parts that make up how I handle email, others may fi
  * signature strip written in sed
  * handle scoring
  * whilst composing an email, viewing attachments added breaks if the filename has spaces
+ * lbdb changes
+  * remove dupes
+  * sending email, have it ignore the 'from' field
 
 # Preflight
 
