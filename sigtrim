@@ -9,7 +9,7 @@ esac
 
 for FILE; do :; done
 
-/bin/sed -ni${ERE}e '
+/bin/sed -n -i -$ERE -e '
 /^>( ?>)* *-- ?$/		b qsig
 /^>( ?>)*.* @ Telemetry$/	b qsig
 
