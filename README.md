@@ -43,7 +43,7 @@ We also need a recent version of [offlineimap](http://offlineimap.org/):
 
     $ sudo apt-get install -yy --no-install-recommends \
     	mutt-patched notmuch-mutt msmtp-mta aspell-en \
-    	runit lbdb signify t-prot \
+    	runit lbdb signify t-prot par \
     	fortunes-min fortunes-bofh-excuses urlscan
 
 # Configuration
@@ -74,7 +74,7 @@ You will need to run the following for a first time install:
     
     $ sudo cp lbdbwrap /usr/local/bin
     $ sudo cp sendmailq /usr/local/bin
-    $ sudo cp sigtrim /usr/local/bin
+    $ sudo cp format-email /usr/local/bin
     
     $ sudo mkdir /etc/sv/runsvdir-$USER
     $ sudo touch /etc/sv/runsvdir-$USER/run

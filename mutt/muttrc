@@ -24,7 +24,7 @@ unset sidebar_visible
   set time_inc=500
   set write_inc=100
 
-  set editor="sigtrim %editor% %s"
+  set editor="format-email %editor% %s"
   set visual="%visual%"
 
 message-hook ~A		'ignore *'

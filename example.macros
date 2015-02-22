@@ -1,6 +1,6 @@
 # this file simple contains the mappings to use for macros, it is used with
 # utils/macro, and it replaces '%....%' with the relevant value given below
-editor: vim "+setlocal spell spelllang=en_gb fo+=aw"
+editor: vim '+setlocal spell spelllang=en_gb fo+=aw formatprg=par\\\\ -qe'
 visual: $my_editor -R "%s"
 # or if you prefer nano
 #editor: nano -A -L -N -S -W -s '$ispell' -r -8 -$

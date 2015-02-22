@@ -13,6 +13,9 @@ for FILE; do :; done
 /^>( ?>)* *-- ?$/		b qsig
 /^>( ?>)*.* @ Telemetry$/	b qsig
 
+/^> ?> ?> ?>/			d
+/^> ?> ?> ?On .* wrote:$/	d
+
 : ok
 x
 2,$ p
