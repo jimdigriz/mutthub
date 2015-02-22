@@ -24,7 +24,7 @@ my_hdr X-Telemetry-Sig: cooked
 
 unset signature
 unset sig_dashes
-set signature="echo '\n\n\
+set signature="echo '\n\
 %name% @ Telemetry\n\
 Head of Infrastructure\n\
 Ext 121\n\
