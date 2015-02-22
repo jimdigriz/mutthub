@@ -3,6 +3,7 @@ This project has the moving parts that make up how I handle email, others may fi
 ## Issues
 
  * notmuch support
+ * replying to an email with an 'text/plain' attachment puts it inline quoted
  * TLS timeout, O365 looking at my PTR records?
  * mailing list handling
   * including the case where server sends me another copy as I am a member (Exchange...)
@@ -73,6 +74,7 @@ You will need to run the following for a first time install:
     
     $ sudo cp lbdbwrap /usr/local/bin
     $ sudo cp sendmailq /usr/local/bin
+    $ sudo cp sigtrim /usr/local/bin
     
     $ sudo mkdir /etc/sv/runsvdir-$USER
     $ sudo touch /etc/sv/runsvdir-$USER/run

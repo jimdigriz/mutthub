@@ -1,0 +1,33 @@
+#!/bin/sh
+
+set -eu
+
+case $(uname) in
+Linux)	ERE=r;;
+*)	ERE=E;;
+esac
+
+for FILE; do :; done
+
+/bin/sed -ni${ERE}e '
+/^>( ?>)* *-- ?$/		b qsig
+/^>( ?>)*.* @ Telemetry$/	b qsig
+
+: ok
+x
+2,$ p
+$ { x; p }
+b
+
+: qsig
+x
+/^>( ?>)*$/! p
+x
+: qsigl
+x
+n
+/^>/ b qsigl
+x
+' "$FILE"
+
+exec "$@"

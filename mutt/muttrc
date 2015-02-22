@@ -24,9 +24,8 @@ unset sidebar_visible
   set time_inc=500
   set write_inc=100
 
-  set editor="%editor%"
+  set editor="sigtrim %editor% %s"
   set visual="%visual%"
-  #set editor="trim-email-signature %s > %s.new && mv %s.new %s && $my_editor -t %s"
 
 message-hook ~A		'ignore *'
 message-hook ~A		'unignore date from to cc bcc subject x-wormnet-spam-score'
