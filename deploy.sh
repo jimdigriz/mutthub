@@ -5,7 +5,7 @@ set -eu
 _mutt () {
 	mkdir -p ~/.mutt/accounts
 	touch ~/.mutt/aliases ~/.mutt/certificates
-	find mutt -type f -name '[_a-zA-Z0-9]*' ! -name '_template' | awk '{ printf "touch ~/.%s && chmod 600 ~/.%s && utils/macros %s >> ~/.%s\n", $1, $1, $1, $1 }' | xargs -I{} sh -c "{}"
+	find mutt -type f -name '[_a-zA-Z0-9]*' ! -name '_template' | awk '{ printf "touch ~/.%s && chmod 600 ~/.%s && utils/macros %s > ~/.%s\n", $1, $1, $1, $1 }' | xargs -I{} sh -c "{}"
 }
 
 _msmtp () {
