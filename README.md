@@ -3,7 +3,6 @@ This project has the moving parts that make up how I handle email, others may fi
 ## Issues
 
  * notmuch support
- * replying to an email with an 'text/plain' attachment puts it inline quoted
  * TLS timeout, O365 looking at my PTR records?
  * mailing list handling
   * including the case where server sends me another copy as I am a member (Exchange...)

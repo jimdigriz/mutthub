@@ -4,6 +4,7 @@ unset confirmappend
   set delete=yes
   set fast_reply
   set include=yes
+  set include_onlyfirst
   set ispell="aspell -e -c"
   set mbox_type=Maildir
   set mime_forward=ask-no
