@@ -5,6 +5,7 @@ visual: $my_editor -R "%s"
 # or if you prefer nano
 #editor: nano -A -L -N -S -W -s '$ispell' -r -8 -$
 #visual: $my_editor -R -v %s
+fqdn: localhost
 name: John Smith
 main.imap: imap.example.com
 main.smtp: smtp.example.com
