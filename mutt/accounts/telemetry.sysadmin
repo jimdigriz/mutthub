@@ -3,7 +3,7 @@
 
 source "$HOME/.mutt/accounts/telemetry"
 
-set folder="$HOME/Mail/telemetry.sysadmin"
+set folder="$HOME/Mail/telemetry.sysadmin/INBOX"
 set spoolfile=+
 set record=!
 set postponed=!/Drafts
