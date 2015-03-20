@@ -772,9 +772,9 @@ remotepass = %telemetry.password%
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 maxconnections = 2
-idlefolders = ['INBOX']
+#idlefolders = ['INBOX']
 holdconnectionopen = yes
-keepalive = 1740
+#keepalive = 1740
 folderfilter = lambda foldername: foldername not in ['Tasks', 'Contacts', 'Journal', 'Notes', 'Calendar', 'Outbox', 'Trash', 'Deleted Items']
 
 [Account telemetry.sysadmin]
@@ -796,7 +796,7 @@ auth_mechanisms = LOGIN
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 maxconnections = 2
-idlefolders = ['INBOX']
+#idlefolders = ['INBOX']
 holdconnectionopen = yes
-keepalive = 1740
+#keepalive = 1740
 folderfilter = lambda foldername: foldername in ['INBOX', 'Sent Items']
