@@ -4,7 +4,7 @@
 set folder="$HOME/Mail/telemetry.aclouter/INBOX"
 set spoolfile=+
 set record=!
-set postponed=!/Drafts
+set postponed=!/../Drafts
 
 set from=%telemetry.email%
 
