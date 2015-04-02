@@ -6,7 +6,7 @@ source "$HOME/.mutt/accounts/telemetry"
 set folder="$HOME/Mail/telemetry.sysadmin/INBOX"
 set spoolfile=+
 set record=!
-set postponed=!/../Drafts
+set postponed==../Drafts
 
 alternates (root|sysadmin)@(telemetry\.com|teleng\.net|jdproject\.com|jdproject\.net)
 
