@@ -90,6 +90,7 @@ You will need to run the following for a first time install:
     exec 2>&1
     exec chpst -u $USER runsvdir /home/$USER/service
     EOF
+    $ sudo update-service --add /etc/sv/runsvdir-alex
 
 This will start offlineimap almost instantly, but for a first run you may wish to run it all in debug mode:
 
