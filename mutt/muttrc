@@ -24,6 +24,7 @@ unset sidebar_visible
   set read_inc=2000
   set time_inc=500
   set write_inc=100
+  set mailcap_path="$HOME/.mailcap:/etc/mailcap:/usr/share/etc/mailcap:/usr/local/etc/mailcap"
 
   set editor="format-email %editor% %s"
   set visual="%visual%"

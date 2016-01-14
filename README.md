@@ -4,6 +4,7 @@ This project has the moving parts that make up how I handle email, others may fi
 
  * formating of email sent is different to how it was saved in editor
  * xargs -0 sh -c 'exec /usr/lib/sendmail -- "$@" < "$FILE.msg"' -f -- < "$FILE.arg"
+ * better mailcap
  * improve use of par
  * notmuch support
  * TLS timeout, O365 looking at my PTR records?
