@@ -1,6 +1,10 @@
 #!/bin/sh
 
-LOG="/home/aclouter/.offlineimap/log"
+set -eu
+
+HOME=$(cat ../env/HOME)
+
+LOG="$HOME/.offlineimap/log"
 
 test -d "$LOG" || mkdir -p -m 2770 "$LOG"
 
