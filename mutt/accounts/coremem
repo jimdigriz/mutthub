@@ -12,7 +12,7 @@ set use_envelope_from=yes
 set envelope_from_address=%coremem.email%
 
 alias me %coremem.email% (%name%)
-alternates '^alex(\\+[a-zA-Z0-9]+)?@coremem\.com$'
+alternates '^alex(\\+[a-zA-Z0-9-]+)?@coremem\.com$'
 
 my_hdr Organization: coreMem Limited
 

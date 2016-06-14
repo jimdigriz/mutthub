@@ -12,7 +12,7 @@ set use_envelope_from=yes
 set envelope_from_address=%digriz.email%
 
 alias me %digriz.email% (%name%)
-alternates '^alex(\\+[a-zA-Z0-9]+)?@digriz\.org\.uk$'
+alternates '^alex(\\+[a-zA-Z0-9-]+)?@digriz\.org\.uk$'
 
 my_hdr Organization: WormNET
 my_hdr Jabber-ID: %digriz.email%
