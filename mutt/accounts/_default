@@ -12,7 +12,8 @@ reset hidden_host
 reset use_domain
 
 set sendmail_wait=-1
-set sendmail="lbdbwrap /usr/local/bin/sendmailq -oem -oi"
+#set sendmail="lbdbwrap /usr/local/bin/sendmailq -oem -oi"
+set sendmail="lbdbwrap /usr/sbin/sendmail -oem -oi"
 reset dsn_notify
 reset dsn_return
 
@@ -33,20 +34,8 @@ unmy_hdr *
 # http://msdn.microsoft.com/en-us/library/ee219609(v=exchg.80).aspx
 my_hdr X-Auto-Response-Suppress: OOF
 
-set sig_dashes
-# eg. ROLE=' - Head of Awesomeness'
-set signature="echo '\
-% ( minwidth\n\
-%name%\n\
-% | minwidth\n\
-\$ROLE\n\
-% )\n\
-\n\
-% ( minwidth\n\
-.sigmonster says:\n\
-% | exec\n\
-fortune -n61 -s | sed '/^\$/d'\n\
-% )' | env ROLE='' signify --input=- |"
+unset sig_dashes
+unset signature
 
 # reset the spam/ham hooks
 macro index,pager S <space>

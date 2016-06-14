@@ -9,6 +9,6 @@ set postponed=!.Drafts
 set from=%fastmail.email%
 
 alias me %fastmail.email% (%name%)
-alternates jimdigriz([\-+][a-z]+)@imapmail\.org
+alternates '^jimdigriz(\\+[a-z0-9]+)?@imapmail\.org$'
 
 macro index,pager S "<save-message>!.Junk Mail<enter>" "File as Spam"

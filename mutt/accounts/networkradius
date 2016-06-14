@@ -1,0 +1,21 @@
+# :hook folder-hook "$HOME/Mail/networkradius.aclouter" source "$HOME/.mutt/accounts/networkradius"
+# :hook mailboxes "$HOME/Mail/networkradius.aclouter/INBOX"
+
+set folder="$HOME/Mail/networkradius.aclouter"
+set spoolfile=+INBOX
+set record=!
+set postponed=!.Drafts
+
+set from=%networkradius.email%
+
+set use_envelope_from=yes
+set envelope_from_address=%networkradius.email%
+
+unset signature
+
+alias me %networkradius.email% (%name%)
+alternates 'aclouter(\\+[a-zA-Z0-9]+)?@networkradius\.com$'
+
+my_hdr Organization: Network RADIUS
+
+macro index,pager S "<save-message>!.Spam<enter>" "File as Spam"

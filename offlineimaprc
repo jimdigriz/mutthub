@@ -39,7 +39,7 @@ metadata = ~/Mail/.offlineimap
 # You will need to specify one section per account below.  You may
 # not use "general" for an account name.
 
-accounts = digriz.alex, fastmail.jimdigriz, telemetry.aclouter, telemetry.sysadmin
+accounts = digriz.alex, coremem.alex, fastmail.jimdigriz, networkradius.aclouter
 
 # Offlineimap can synchronize more than one account at a time.  If you
 # want to enable this feature, set the below value to something
@@ -724,12 +724,35 @@ remotehost = %digriz.imap%
 remoteuser = %digriz.email%
 remotepass = %digriz.password%
 ssl = yes
-sslcacertfile = /etc/ssl/certs/WombleNet_Certificate_Authority.pem
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 maxconnections = 2
 idlefolders = ['INBOX']
 holdconnectionopen = yes
 keepalive = 1740
 folderfilter = lambda foldername: foldername not in ['INBOX/Trash', 'INBOX/Deleted Items', 'INBOX/Archive', 'INBOX/soas']
+
+[Account coremem.alex]
+localrepository = local.coremem.alex
+remoterepository = remote.coremem.alex
+autorefresh = 5
+quick = 3
+
+[Repository local.coremem.alex]
+type = Maildir
+localfolders = ~/Mail/coremem.alex
+
+[Repository remote.coremem.alex]
+type = IMAP
+remotehost = %coremem.imap%
+remoteuser = %coremem.email%
+remotepass = %coremem.password%
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+maxconnections = 2
+idlefolders = ['INBOX']
+holdconnectionopen = yes
+keepalive = 1740
+folderfilter = lambda foldername: foldername not in ['INBOX/Trash', 'INBOX/Deleted Items', 'INBOX/Archive']
 
 [Account fastmail.jimdigriz]
 localrepository = local.fastmail.jimdigriz
@@ -754,49 +777,25 @@ holdconnectionopen = yes
 keepalive = 1740
 folderfilter = lambda foldername: foldername not in ['INBOX.Trash', 'INBOX.Deleted Items', 'INBOX.Archive']
 
-[Account telemetry.aclouter]
-localrepository = local.telemetry.aclouter
-remoterepository = remote.telemetry.aclouter
+[Account networkradius.aclouter]
+localrepository = local.networkradius.aclouter
+remoterepository = remote.networkradius.aclouter
 autorefresh = 5
 quick = 3
 
-[Repository local.telemetry.aclouter]
+[Repository local.networkradius.aclouter]
 type = Maildir
-localfolders = ~/Mail/telemetry.aclouter
+localfolders = ~/Mail/networkradius.aclouter
 
-[Repository remote.telemetry.aclouter]
+[Repository remote.networkradius.aclouter]
 type = IMAP
-remotehost = %telemetry.imap%
-remoteuser = %telemetry.email%
-remotepass = %telemetry.password%
+remotehost = %networkradius.imap%
+remoteuser = %networkradius.username%
+remotepass = %networkradius.password%
 ssl = yes
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+cert_fingerprint = d4e06fe0ed7d18ef18f42d1b3136794d9bf72ed5
 maxconnections = 2
-#idlefolders = ['INBOX']
+idlefolders = ['INBOX']
 holdconnectionopen = yes
-#keepalive = 1740
-folderfilter = lambda foldername: foldername not in ['Tasks', 'Contacts', 'Journal', 'Notes', 'Calendar', 'Outbox', 'Trash', 'Deleted Items']
-
-[Account telemetry.sysadmin]
-localrepository = local.telemetry.sysadmin
-remoterepository = remote.telemetry.sysadmin
-autorefresh = 5
-quick = 3
-
-[Repository local.telemetry.sysadmin]
-type = Maildir
-localfolders = ~/Mail/telemetry.sysadmin
-
-[Repository remote.telemetry.sysadmin]
-type = IMAP
-remotehost = %telemetry.imap%
-remoteuser = %telemetry.email%\\sysadmin@telemetry.com
-remotepass = %telemetry.password%
-auth_mechanisms = LOGIN
-ssl = yes
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-maxconnections = 2
-#idlefolders = ['INBOX']
-holdconnectionopen = yes
-#keepalive = 1740
-folderfilter = lambda foldername: foldername in ['INBOX', 'Sent Items']
+keepalive = 1740
+folderfilter = lambda foldername: foldername in ['INBOX']
