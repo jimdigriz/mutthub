@@ -1,4 +1,4 @@
-# :hook folder-hook . source "$HOME/.mutt/accounts/_default"
+# :hook folder-hook . source "$HOME/.mutt/accounts/00default"
 
 set imap_idle
 

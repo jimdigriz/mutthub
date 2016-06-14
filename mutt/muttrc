@@ -67,7 +67,7 @@ unmailboxes *
 
 # account hooks
 unhook *
-source "find \"$HOME/.mutt/accounts\" -type f | xargs -n1 sed -n '/^# :hook\\(\\[.*`hostname`.*\\]\\)\\?[[:space:]]/ s/# :hook[^[:space:]]*[[:space:]]// p' |"
+source "find \"$HOME/.mutt/accounts\" -type f | sort | xargs -n1 sed -n '/^# :hook\\(\\[.*`hostname`.*\\]\\)\\?[[:space:]]/ s/# :hook[^[:space:]]*[[:space:]]// p' |"
 
 # handy limit
 macro index L <limit>~N|~U|~F|~d<7d<enter>
