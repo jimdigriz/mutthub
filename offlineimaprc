@@ -729,7 +729,7 @@ maxconnections = 2
 idlefolders = ['INBOX']
 holdconnectionopen = yes
 keepalive = 1740
-folderfilter = lambda foldername: foldername not in ['INBOX/Trash', 'INBOX/Deleted Items', 'INBOX/Archive', 'INBOX/Sent']
+folderfilter = lambda foldername: foldername not in ['INBOX/Trash', 'INBOX/Deleted Items', 'INBOX/Archive']
 
 [Account coremem.alex]
 localrepository = local.coremem.alex
@@ -752,7 +752,7 @@ maxconnections = 2
 idlefolders = ['INBOX']
 holdconnectionopen = yes
 keepalive = 1740
-folderfilter = lambda foldername: foldername not in ['INBOX/Trash', 'INBOX/Deleted Items', 'INBOX/Archive', 'INBOX/Sent']
+folderfilter = lambda foldername: foldername not in ['INBOX/Trash', 'INBOX/Deleted Items', 'INBOX/Archive']
 
 [Account fastmail.jimdigriz]
 localrepository = local.fastmail.jimdigriz
