@@ -11,7 +11,7 @@ set hostname="`hostname -s`.digriz.org.uk"
 reset hidden_host
 reset use_domain
 
-set sendmail_wait=-1
+#set sendmail_wait=-1
 #set sendmail="lbdbwrap /usr/local/bin/sendmailq -oem -oi"
 set sendmail="lbdbwrap /usr/sbin/sendmail -oem -oi"
 reset dsn_notify
