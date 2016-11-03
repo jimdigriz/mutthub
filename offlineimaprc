@@ -806,6 +806,7 @@ remoterepository = remote.adloox.aclouter
 autorefresh = 5
 quick = 3
 synclabels = yes
+postsynchook = sh ~/.mutt/utils/offlineimap.postsynchook.adloox
 
 [Repository local.adloox.aclouter]
 type = GmailMaildir
@@ -826,4 +827,4 @@ maxconnections = 2
 idlefolders = ['[Gmail]/All Mail']
 holdconnectionopen = yes
 keepalive = 1740
-folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Drafts', '[Gmail]/Spam', '[Gmail]/Trash']
+folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Drafts', '[Gmail]/Spam', '[Gmail]/Trash', '[Gmail]/Sent Mail']

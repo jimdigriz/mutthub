@@ -46,7 +46,7 @@ We also need a recent version of [offlineimap](http://offlineimap.org/):
 
     $ sudo apt-get install -yy --no-install-recommends \
     	mutt-patched notmuch-mutt msmtp-mta aspell-en \
-    	runit lbdb signify t-prot par \
+    	runit lbdb signify t-prot par fdupes \
     	fortunes-min fortunes-bofh-excuses urlscan
 
 # Configuration
