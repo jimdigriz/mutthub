@@ -5,6 +5,7 @@ set folder="$HOME/Mail/adloox.aclouter"
 set spoolfile="+[Gmail].All Mail"
 set record="+[Gmail].Sent Mail"
 set postponed="+[Gmail].Drafts"
+set trash="+[Gmail].Bin"
 
 set from=%adloox.email%
 

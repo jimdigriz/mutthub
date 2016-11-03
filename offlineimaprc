@@ -827,4 +827,4 @@ maxconnections = 2
 idlefolders = ['[Gmail]/All Mail']
 holdconnectionopen = yes
 keepalive = 1740
-folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Drafts', '[Gmail]/Spam', '[Gmail]/Trash', '[Gmail]/Sent Mail']
+folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Drafts', '[Gmail]/Spam', '[Gmail]/Trash', '[Gmail]/Sent Mail', '[Gmail]/Bin']
