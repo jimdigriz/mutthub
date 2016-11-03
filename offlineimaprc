@@ -39,7 +39,7 @@ metadata = ~/Mail/.offlineimap
 # You will need to specify one section per account below.  You may
 # not use "general" for an account name.
 
-accounts = digriz.alex, coremem.alex, fastmail.jimdigriz, networkradius.aclouter
+accounts = digriz.alex, coremem.alex, fastmail.jimdigriz, networkradius.aclouter, adloox.aclouter
 
 # Offlineimap can synchronize more than one account at a time.  If you
 # want to enable this feature, set the below value to something
@@ -799,3 +799,31 @@ idlefolders = ['INBOX']
 holdconnectionopen = yes
 keepalive = 1740
 folderfilter = lambda foldername: foldername in ['INBOX']
+
+[Account adloox.aclouter]
+localrepository = local.adloox.aclouter
+remoterepository = remote.adloox.aclouter
+autorefresh = 5
+quick = 3
+
+[Repository local.adloox.aclouter]
+type = GmailMaildir
+localfolders = ~/Mail/adloox.aclouter
+
+[Repository remote.adloox.aclouter]
+type = IMAP
+auth_mechanisms = XOAUTH2
+oauth2_client_id = %adloox.oauth2id%
+oauth2_client_secret = %adloox.oauth2secret%
+oauth2_request_url = https://accounts.google.com/o/oauth2/token
+oauth2_refresh_token = %adloox.oauth2refresh%
+remotehost = %adloox.imap%
+remoteuser = %adloox.username%
+#remotepass = %adloox.password%
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+maxconnections = 2
+idlefolders = ['INBOX']
+holdconnectionopen = yes
+keepalive = 1740
+folderfilter = lambda foldername: foldername not in ['INBOX/Trash', 'INBOX/Deleted Items', 'INBOX/Archive']
