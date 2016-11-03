@@ -1,10 +1,10 @@
 # :hook folder-hook "$HOME/Mail/adloox.aclouter" source "$HOME/.mutt/accounts/adloox"
-# :hook mailboxes "$HOME/Mail/adloox.aclouter/INBOX"
+# :hook mailboxes "$HOME/Mail/adloox.aclouter/\[Gmail\].All\ Mail"
 
 set folder="$HOME/Mail/adloox.aclouter"
-set spoolfile=+INBOX
+set spoolfile="+[Gmail]/All Mail"
 set record=!
-set postponed=!.Drafts
+set postponed="+[Gmail]/Drafts"
 
 set from=%adloox.email%
 
@@ -18,4 +18,4 @@ alternates 'aclouter(\\+[a-zA-Z0-9-]+)?@adloox\.com$'
 
 my_hdr Organization: Adloox
 
-macro index,pager S "<save-message>!.Spam<enter>" "File as Spam"
+macro index,pager S "<save-message>"+[Gmail]/Spam"<enter>" "File as Spam"

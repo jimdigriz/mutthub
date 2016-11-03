@@ -805,6 +805,8 @@ localrepository = local.adloox.aclouter
 remoterepository = remote.adloox.aclouter
 autorefresh = 5
 quick = 3
+synclabels = yes
+ignorelabels = \Inbox, \Starred, \Sent, \Draft, \Spam, \Trash, \Important
 
 [Repository local.adloox.aclouter]
 type = GmailMaildir
@@ -819,7 +821,6 @@ oauth2_request_url = https://accounts.google.com/o/oauth2/token
 oauth2_refresh_token = %adloox.oauth2refresh%
 remotehost = %adloox.imap%
 remoteuser = %adloox.username%
-#remotepass = %adloox.password%
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 maxconnections = 2
