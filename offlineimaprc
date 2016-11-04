@@ -1298,6 +1298,7 @@ holdconnectionopen = yes
 keepalive = 1740
 folderfilter = lambda foldername: foldername not in ['INBOX/Trash', 'INBOX/Deleted Items', 'INBOX/Archive']
 
+
 [Account coremem.alex]
 localrepository = local.coremem.alex
 remoterepository = remote.coremem.alex
@@ -1321,6 +1322,7 @@ usecompression = yes
 holdconnectionopen = yes
 keepalive = 1740
 folderfilter = lambda foldername: foldername not in ['INBOX/Trash', 'INBOX/Deleted Items', 'INBOX/Archive']
+
 
 [Account fastmail.jimdigriz]
 localrepository = local.fastmail.jimdigriz
@@ -1346,6 +1348,7 @@ holdconnectionopen = yes
 keepalive = 1740
 folderfilter = lambda foldername: foldername not in ['INBOX.Trash', 'INBOX.Deleted Items', 'INBOX.Archive', 'INBOX.Sent']
 
+
 [Account networkradius.aclouter]
 localrepository = local.networkradius.aclouter
 remoterepository = remote.networkradius.aclouter
@@ -1369,6 +1372,7 @@ usecompression = yes
 holdconnectionopen = yes
 keepalive = 1740
 folderfilter = lambda foldername: foldername in ['INBOX']
+
 
 [Account adloox.aclouter]
 localrepository = local.adloox.aclouter
