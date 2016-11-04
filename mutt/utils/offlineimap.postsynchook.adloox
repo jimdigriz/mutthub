@@ -1,2 +1,2 @@
-fdupes -q -R "$HOME/Mail/adloox.aclouter/[Gmail].All Mail" -R "$HOME/Mail/adloox.aclouter/[Gmail].Sent Mail" \
+fdupes -R "$HOME/Mail/adloox.aclouter/[Gmail].All Mail" -R "$HOME/Mail/adloox.aclouter/[Gmail].Sent Mail" \
 	| sed -e '/^$/ d' | tr '\n' '\0' | xargs -r -0 -n2 ln -f
