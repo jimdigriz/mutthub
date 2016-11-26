@@ -1,6 +1,0 @@
-mbsync $1
-
-if [ $1 = "aclouter@adloox.com" ]; then
-	fdupes -R "$HOME/Mail/adloox/Inbox" -R "$HOME/Mail/adloox/Sent Mail" \
-		| sed -e '/^$/ d' | tr '\n' '\0' | xargs -r -0 -n2 ln -f
-fi

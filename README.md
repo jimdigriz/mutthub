@@ -39,7 +39,7 @@ As you amend the configuration files detailed below, you can use the `macros` to
 
     $ sudo apt-get install -yy --no-install-recommends \
     	mutt-patched notmuch-mutt msmtp-mta aspell-en \
-    	lbdb signify t-prot par fdupes isync urlscan
+    	lbdb signify t-prot par isync urlscan
 
 # Configuration
 

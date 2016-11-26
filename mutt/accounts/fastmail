@@ -11,4 +11,4 @@ set from=%fastmail.email%
 alias me %fastmail.email% (%name%)
 alternates '^jimdigriz(\\+[a-zA-Z0-9-]+)?@imapmail\.org$'
 
-macro index,pager $ "<sync-mailbox><enter-command>set my_wait_key=\$wait_key<enter><enter-command>set wait_key=no<enter><shell-escape>/bin/sh -eu ~/.mutt/utils/sync %fastmail.email%<enter><enter-command>set wait_key=\$my_wait_key<enter>" "Sync Mailbox"
+macro index,pager $ "<sync-mailbox><enter-command>set my_wait_key=\$wait_key<enter><enter-command>set wait_key=no<enter><shell-escape>mbsync fastmail<enter><enter-command>set wait_key=\$my_wait_key<enter>" "Sync Mailbox"

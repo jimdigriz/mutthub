@@ -18,4 +18,4 @@ alternates 'aclouter(\\+[a-zA-Z0-9-]+)?@networkradius\.com$'
 
 my_hdr Organization: Network RADIUS
 
-macro index,pager $ "<sync-mailbox><enter-command>set my_wait_key=\$wait_key<enter><enter-command>set wait_key=no<enter><shell-escape>/bin/sh -eu ~/.mutt/utils/sync %networkradius.email%<enter><enter-command>set wait_key=\$my_wait_key<enter>" "Sync Mailbox"
+macro index,pager $ "<sync-mailbox><enter-command>set my_wait_key=\$wait_key<enter><enter-command>set wait_key=no<enter><shell-escape>mbsync networkradius<enter><enter-command>set wait_key=\$my_wait_key<enter>" "Sync Mailbox"

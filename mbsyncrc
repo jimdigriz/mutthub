@@ -27,7 +27,7 @@ Create Slave
 CopyArrivalDate yes
 Patterns %
 
-Group %digriz.email%
+Group digriz
 Channels digriz:Inbox,Drafts
 
 ######################
@@ -54,7 +54,7 @@ Create Slave
 CopyArrivalDate yes
 Patterns %
 
-Group %fastmail.email%
+Group fastmail
 Channels fastmail:Inbox,Drafts
 
 ######################
@@ -80,7 +80,7 @@ Create Slave
 CopyArrivalDate yes
 Patterns %
 
-Group %coremem.email%
+Group coremem
 Channels coremem:Inbox,Drafts
 
 ######################
@@ -108,7 +108,7 @@ Create Slave
 CopyArrivalDate yes
 Patterns %
 
-Group %networkradius.email%
+Group networkradius
 Channels networkradius:Inbox
 
 ######################
@@ -133,6 +133,14 @@ Slave :local,adloox:Inbox
 Create Slave
 CopyArrivalDate yes
 
+Channel adloox,sentmail
+# only push for sent
+Sync Push New ReNew Delete Flags
+Master :adloox:"[Gmail]/Sent Mail"
+Slave :local,adloox:"Sent Mail"
+Create Slave
+CopyArrivalDate yes
+
 Channel adloox
 Master :adloox:[Gmail]/
 Slave :local,adloox:
@@ -140,8 +148,7 @@ Create Slave
 CopyArrivalDate yes
 Patterns %
 
-# we have to fetch "Sent Mail" so things line up,
-# but we use fdupes to spare us from the insanity
-Group %adloox.email%
+Group adloox
 Channels adloox,allmail
-Channels adloox:Drafts,"Sent Mail"
+Channels adloox,sentmail
+Channels adloox:Drafts

@@ -14,4 +14,4 @@ set envelope_from_address=%digriz.email%
 alias me %digriz.email% (%name%)
 alternates '^alex(\\+[a-zA-Z0-9-]+)?@digriz\.org\.uk$'
 
-macro index,pager $ "<sync-mailbox><enter-command>set my_wait_key=\$wait_key<enter><enter-command>set wait_key=no<enter><shell-escape>/bin/sh -eu ~/.mutt/utils/sync %digriz.email%<enter><enter-command>set wait_key=\$my_wait_key<enter>" "Sync Mailbox"
+macro index,pager $ "<sync-mailbox><enter-command>set my_wait_key=\$wait_key<enter><enter-command>set wait_key=no<enter><shell-escape>mbsync digriz<enter><enter-command>set wait_key=\$my_wait_key<enter>" "Sync Mailbox"
