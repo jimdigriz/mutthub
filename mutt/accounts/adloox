@@ -1,11 +1,10 @@
-# :hook folder-hook "$HOME/Mail/adloox.aclouter" source "$HOME/.mutt/accounts/adloox"
-# :hook mailboxes "$HOME/Mail/adloox.aclouter/\[Gmail\].All\ Mail"
+# :hook folder-hook "$HOME/Mail/adloox" source "$HOME/.mutt/accounts/adloox"
+# :hook mailboxes "$HOME/Mail/adloox/Inbox"
 
-set folder="$HOME/Mail/adloox.aclouter"
-set spoolfile="+[Gmail].All Mail"
-set record="+[Gmail].Sent Mail"
-set postponed="+[Gmail].Drafts"
-set trash="+[Gmail].Bin"
+set folder="$HOME/Mail/adloox"
+set spoolfile="+Inbox"
+set record="+Sent Mail"
+set postponed="+Drafts"
 
 set from=%adloox.email%
 
@@ -22,4 +21,4 @@ alternates 'aclouter(\\+[a-zA-Z0-9-]+)?@adloox\.com$'
 
 my_hdr Organization: Adloox
 
-macro index,pager S "<save-message>"+[Gmail].Spam"<enter>" "File as Spam"
+macro index,pager $ "<sync-mailbox><shell-escape>/bin/sh -eu ~/.mutt/utils/sync %adloox.email%<enter>" "Sync Mailbox"

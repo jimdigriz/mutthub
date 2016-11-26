@@ -7,6 +7,8 @@ unset spoolfile
 unset record
 unset postponed
 
+set maildir_trash
+
 set hostname="`hostname -s`.digriz.org.uk"
 reset hidden_host
 reset use_domain
@@ -37,5 +39,4 @@ my_hdr X-Auto-Response-Suppress: OOF
 unset sig_dashes
 unset signature
 
-# reset the spam/ham hooks
-macro index,pager S <space>
+macro index,pager $ "<sync-mailbox>" "Sync Mailbox"

@@ -2,17 +2,17 @@ This project has the moving parts that make up how I handle email, others may fi
 
 ## Issues
 
+ * use expect/openssl/... to do IMAP idle
+  * ...and splice in and out mbsync into the existing connection
  * formating of email sent is different to how it was saved in editor
  * xargs -0 sh -c 'exec /usr/lib/sendmail -- "$@" < "$FILE.msg"' -f -- < "$FILE.arg"
  * better mailcap
  * improve use of par
  * notmuch support
- * TLS timeout, O365 looking at my PTR records?
  * mailing list handling
   * including the case where server sends me another copy as I am a member (Exchange...)
  * URL extract
  * address book
- * no work account on personal workstation
  * failure to send email, still drops copy in INBOX due to Fcc, leading to dupes
   * can we Fcc *after* sendmail?
   * Bcc self a better option?
@@ -35,19 +35,11 @@ You will need to [have git installed on your workstation](http://git-scm.com/boo
 
 As you amend the configuration files detailed below, you can use the `macros` to handle substitutions for you.
 
-We also need a recent version of [offlineimap](http://offlineimap.org/):
-
-    $ git clone https://github.com/OfflineIMAP/offlineimap.git
-    $ cd offlineimap
-    $ make -C offlineimap
-    $ ( cd offlineimap && python setup.py install )
-
 ## Debian
 
     $ sudo apt-get install -yy --no-install-recommends \
     	mutt-patched notmuch-mutt msmtp-mta aspell-en \
-    	runit lbdb signify t-prot par fdupes \
-    	fortunes-min fortunes-bofh-excuses urlscan
+    	lbdb signify t-prot par fdupes isync urlscan
 
 # Configuration
 
@@ -57,7 +49,7 @@ You should copy `mutt/accounts/_template` to `mutt/accounts/main` as you see fit
 
 **N.B.** pay attention to the `# :hook` commands at the top of those files, they do the plumbing
 
-## offlineimap
+## mbsync
 
 Edit the end of the file as you see fit.
 
@@ -78,25 +70,3 @@ You will need to run the following for a first time install:
     $ sudo cp lbdbwrap /usr/local/bin
     $ sudo cp sendmailq /usr/local/bin
     $ sudo cp format-email /usr/local/bin
-    
-    $ sudo mkdir /etc/sv/runsvdir-$USER
-    $ sudo touch /etc/sv/runsvdir-$USER/run
-    $ sudo chmod +x /etc/sv/runsvdir-$USER/run
-    $ cat <<EOF | sudo cat >> /etc/sv/runsvdir-$USER/run
-    #!/bin/sh
-    
-    set -eu
-    
-    exec 2>&1
-    exec chpst -u $USER runsvdir /home/$USER/service
-    EOF
-    $ sudo update-service --add /etc/sv/runsvdir-alex
-
-This will start offlineimap almost instantly, but for a first run you may wish to run it all in debug mode:
-
-    sv -w 30 force-stop ~/service/offlineimap
-    env DEBUG=1 sh -x ~/service/offlineimap/run
-
-Optionally you may want to use TTYUI due to rendering glitches, so run:
-
-    env DEBUG=1 UI=ttyui sh -x ~/service/offlineimap/run

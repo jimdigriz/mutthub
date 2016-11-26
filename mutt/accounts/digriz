@@ -1,10 +1,10 @@
-# :hook folder-hook "$HOME/Mail/digriz.alex" source "$HOME/.mutt/accounts/digriz"
-# :hook mailboxes "$HOME/Mail/digriz.alex/INBOX"
+# :hook folder-hook "$HOME/Mail/digriz" source "$HOME/.mutt/accounts/digriz"
+# :hook mailboxes "$HOME/Mail/digriz/Inbox"
 
-set folder="$HOME/Mail/digriz.alex"
-set spoolfile=+INBOX
+set folder="$HOME/Mail/digriz"
+set spoolfile=+Inbox
 set record=!
-set postponed=!.Drafts
+set postponed=!Drafts
 
 set from=%digriz.email%
 
@@ -14,7 +14,4 @@ set envelope_from_address=%digriz.email%
 alias me %digriz.email% (%name%)
 alternates '^alex(\\+[a-zA-Z0-9-]+)?@digriz\.org\.uk$'
 
-my_hdr Organization: WormNET
-my_hdr Jabber-ID: %digriz.email%
-
-macro index,pager S "<save-message>!.Spam<enter>" "File as Spam"
+macro index,pager $ "<sync-mailbox><shell-escape>/bin/sh -eu ~/.mutt/utils/sync %digriz.email%<enter>" "Sync Mailbox"

@@ -17,16 +17,10 @@ _msmtp () {
 	utils/macros msmtprc >> ~/.msmtprc
 }
 
-_offlineimap () {
-	: > ~/.offlineimaprc
-	chmod 600 ~/.offlineimaprc
-	utils/macros offlineimaprc >> ~/.offlineimaprc
-	mkdir -p ~/service
-	cp -r runit/offlineimap ~/service
-	mkdir -p ~/service/offlineimap/env
-	echo "$HOME" > ~/service/offlineimap/env/HOME
-
-	sv -w 30 force-shutdown ~/service/offlineimap >/dev/null 2>/dev/null
+_mbsync () {
+	: > ~/.mbsyncrc
+	chmod 600 ~/.mbsyncrc
+	utils/macros mbsyncrc >> ~/.mbsyncrc
 }
 
 echo installing mutthub
@@ -39,8 +33,8 @@ printf ' - msmtp: '
 _msmtp		|| { echo failed; exit 1; }
 echo done
 
-printf ' - offlineimap: '
-_offlineimap	|| { echo failed; exit 1; }
+printf ' - mbsync: '
+_mbsync		|| { echo failed; exit 1; }
 echo done
 
 echo

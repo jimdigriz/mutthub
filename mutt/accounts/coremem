@@ -1,10 +1,10 @@
-# :hook folder-hook "$HOME/Mail/coremem.alex" source "$HOME/.mutt/accounts/coremem"
-# :hook mailboxes "$HOME/Mail/coremem.alex/INBOX"
+# :hook folder-hook "$HOME/Mail/coremem" source "$HOME/.mutt/accounts/coremem"
+# :hook mailboxes "$HOME/Mail/coremem/Inbox"
 
-set folder="$HOME/Mail/coremem.alex"
-set spoolfile=+INBOX
+set folder="$HOME/Mail/coremem"
+set spoolfile=+Inbox
 set record=!
-set postponed=!.Drafts
+set postponed=!Drafts
 
 set from=%coremem.email%
 
@@ -16,4 +16,4 @@ alternates '^alex(\\+[a-zA-Z0-9-]+)?@coremem\.com$'
 
 my_hdr Organization: coreMem Limited
 
-macro index,pager S "<save-message>!.Spam<enter>" "File as Spam"
+macro index,pager $ "<sync-mailbox><shell-escape>/bin/sh -eu ~/.mutt/utils/sync %coremem.email%<enter>" "Sync Mailbox"
