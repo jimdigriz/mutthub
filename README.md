@@ -61,6 +61,8 @@ Edit the end of the file as you see fit.
 
     $ ./deploy.sh
 
+You will need to also make sure the top level `~/Mail/<account>` directories exist.
+
 ## First Time
 
 You will need to run the following for a first time install:
