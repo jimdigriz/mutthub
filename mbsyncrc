@@ -3,22 +3,47 @@ Expunge Both
 
 ######################
 
+MaildirStore local,test
+Path ~/Mail/test/
+
+IMAPAccount test
+Host %test.imap%
+User %test.username%
+Pass %test.password%
+Tunnel "echo '* OK [CAPABILITY IMAP4rev1 LITERAL+ ID ENABLE AUTH=DIGEST-MD5 AUTH=CRAM-MD5 AUTH=NTLM AUTH=LOGIN AUTH=PLAIN SASL-IR] wormnet.eu Cyrus IMAP v2.4.17-caldav-beta10-Debian-2.4.17+caldav~beta10-18 server ready'; openssl s_client -quiet -connect %test.imap%:143 -starttls imap -tls1_2 | grep --line-buffered -v ^CONNECTED"
+RequireSSL no
+
+IMAPStore test
+Account test
+MapInbox Inbox
+Trash Trash
+
+Channel test
+Master :test:
+Slave :local,test:
+Create Slave
+CopyArrivalDate yes
+Patterns %
+
+Group test
+Channels test:Inbox,Drafts
+
+######################
+
 MaildirStore local,digriz
 Path ~/Mail/digriz/
 
 IMAPAccount digriz
 Host %digriz.imap%
-User %digriz.email%
-Pass %digriz.password%
+User %digriz.username%
+Pass "%digriz.password%"
+UseIMAPS yes
 UseTLSv1 no
 UseTLSv1.2 yes
-#Tunnel "echo '* OK [CAPABILITY IMAP4rev1 LITERAL+ ID ENABLE AUTH=DIGEST-MD5 AUTH=CRAM-MD5 AUTH=NTLM AUTH=LOGIN AUTH=PLAIN SASL-IR] wormnet.eu Cyrus IMAP v2.4.17-caldav-beta10-Debian-2.4.17+caldav~beta10-18 server ready'; openssl s_client -quiet -connect %digriz.imap%:143 -starttls imap -tls1_2 | grep --line-buffered -v ^CONNECTED"
-#RequireSSL no
 
 IMAPStore digriz
 Account digriz
 MapInbox Inbox
-Trash Trash
 
 Channel digriz
 Master :digriz:
@@ -32,40 +57,14 @@ Channels digriz:Inbox,Drafts
 
 ######################
 
-MaildirStore local,fastmail
-Path ~/Mail/fastmail/
-
-IMAPAccount fastmail
-Host %fastmail.imap%
-User %fastmail.email%
-Pass %fastmail.password%
-UseIMAPS yes
-UseTLSv1 no
-UseTLSv1.2 yes
-
-IMAPStore fastmail
-Account fastmail
-MapInbox Inbox
-
-Channel fastmail
-Master :fastmail:
-Slave :local,fastmail:
-Create Slave
-CopyArrivalDate yes
-Patterns %
-
-Group fastmail
-Channels fastmail:Inbox,Drafts
-
-######################
-
 MaildirStore local,coremem
 Path ~/Mail/coremem/
 
 IMAPAccount coremem
 Host %coremem.imap%
-User %coremem.email%
-Pass %coremem.password%
+User %coremem.username%
+Pass "%coremem.password%"
+UseIMAPS yes
 UseTLSv1 no
 UseTLSv1.2 yes
 
@@ -118,7 +117,7 @@ Path ~/Mail/adloox/
 
 IMAPAccount adloox
 Host %adloox.imap%
-User %adloox.email%
+User %adloox.username%
 Pass %adloox.password%
 UseIMAPS yes
 UseTLSv1 no
@@ -152,3 +151,45 @@ Group adloox
 Channels adloox,allmail
 Channels adloox,sentmail
 Channels adloox:Drafts
+
+######################
+
+MaildirStore local,solex
+Path ~/Mail/solex/
+
+IMAPAccount solex
+Host %solex.imap%
+User %solex.username%
+Pass %solex.password%
+UseIMAPS yes
+UseTLSv1 no
+UseTLSv1.2 yes
+
+IMAPStore solex
+Account solex
+
+Channel solex,allmail
+Master :solex:"[Gmail]/All Mail"
+Slave :local,solex:Inbox
+Create Slave
+CopyArrivalDate yes
+
+Channel solex,sentmail
+# only push for sent
+Sync Push New ReNew Delete Flags
+Master :solex:"[Gmail]/Sent Mail"
+Slave :local,solex:"Sent Mail"
+Create Slave
+CopyArrivalDate yes
+
+Channel solex
+Master :solex:[Gmail]/
+Slave :local,solex:
+Create Slave
+CopyArrivalDate yes
+Patterns %
+
+Group solex
+Channels solex,allmail
+Channels solex,sentmail
+Channels solex:Drafts
