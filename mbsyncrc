@@ -132,14 +132,6 @@ Slave :local,adloox:Inbox
 Create Slave
 CopyArrivalDate yes
 
-Channel adloox,sentmail
-# only push for sent
-Sync Push New ReNew Delete Flags
-Master :adloox:"[Gmail]/Sent Mail"
-Slave :local,adloox:"Sent Mail"
-Create Slave
-CopyArrivalDate yes
-
 Channel adloox
 Master :adloox:[Gmail]/
 Slave :local,adloox:
@@ -149,7 +141,6 @@ Patterns %
 
 Group adloox
 Channels adloox,allmail
-Channels adloox,sentmail
 Channels adloox:Drafts
 
 ######################
@@ -174,14 +165,6 @@ Slave :local,solex:Inbox
 Create Slave
 CopyArrivalDate yes
 
-Channel solex,sentmail
-# only push for sent
-Sync Push New ReNew Delete Flags
-Master :solex:"[Gmail]/Sent Mail"
-Slave :local,solex:"Sent Mail"
-Create Slave
-CopyArrivalDate yes
-
 Channel solex
 Master :solex:[Gmail]/
 Slave :local,solex:
@@ -191,5 +174,4 @@ Patterns %
 
 Group solex
 Channels solex,allmail
-Channels solex,sentmail
 Channels solex:Drafts
