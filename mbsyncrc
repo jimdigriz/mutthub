@@ -11,7 +11,7 @@ Host %test.imap%
 User %test.username%
 Pass %test.password%
 Tunnel "echo '* OK [CAPABILITY IMAP4rev1 LITERAL+ ID ENABLE AUTH=DIGEST-MD5 AUTH=CRAM-MD5 AUTH=NTLM AUTH=LOGIN AUTH=PLAIN SASL-IR] wormnet.eu Cyrus IMAP v2.4.17-caldav-beta10-Debian-2.4.17+caldav~beta10-18 server ready'; openssl s_client -quiet -connect %test.imap%:143 -starttls imap -tls1_2 | grep --line-buffered -v ^CONNECTED"
-RequireSSL no
+SSLType None
 
 IMAPStore test
 Account test
@@ -34,12 +34,12 @@ MaildirStore local,digriz
 Path ~/Mail/digriz/
 
 IMAPAccount digriz
+AuthMechs LOGIN
 Host %digriz.imap%
 User %digriz.username%
 Pass "%digriz.password%"
-UseIMAPS yes
-UseTLSv1 no
-UseTLSv1.2 yes
+SSLType IMAPS
+SSLVersions TLSv1.2
 
 IMAPStore digriz
 Account digriz
@@ -61,12 +61,12 @@ MaildirStore local,coremem
 Path ~/Mail/coremem/
 
 IMAPAccount coremem
+AuthMechs LOGIN
 Host %coremem.imap%
 User %coremem.username%
 Pass "%coremem.password%"
-UseIMAPS yes
-UseTLSv1 no
-UseTLSv1.2 yes
+SSLType IMAPS
+SSLVersions TLSv1.2
 
 IMAPStore coremem
 Account coremem
@@ -88,13 +88,13 @@ MaildirStore local,networkradius
 Path ~/Mail/networkradius/
 
 IMAPAccount networkradius
+AuthMechs LOGIN
 Host %networkradius.imap%
 User %networkradius.username%
 Pass %networkradius.password%
 CertificateFile /usr/src/mutthub/networkradius.crt
-UseIMAPS yes
-UseTLSv1 no
-UseTLSv1.2 yes
+SSLType IMAPS
+SSLVersions TLSv1.2
 
 IMAPStore networkradius
 Account networkradius
@@ -116,12 +116,12 @@ MaildirStore local,adloox
 Path ~/Mail/adloox/
 
 IMAPAccount adloox
+AuthMechs LOGIN
 Host %adloox.imap%
 User %adloox.username%
 Pass %adloox.password%
-UseIMAPS yes
-UseTLSv1 no
-UseTLSv1.2 yes
+SSLType IMAPS
+SSLVersions TLSv1.2
 
 IMAPStore adloox
 Account adloox
@@ -149,12 +149,12 @@ MaildirStore local,solex
 Path ~/Mail/solex/
 
 IMAPAccount solex
+AuthMechs LOGIN
 Host %solex.imap%
 User %solex.username%
 Pass %solex.password%
-UseIMAPS yes
-UseTLSv1 no
-UseTLSv1.2 yes
+SSLType IMAPS
+SSLVersions TLSv1.2
 
 IMAPStore solex
 Account solex
