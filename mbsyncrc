@@ -112,39 +112,6 @@ Channels networkradius:Inbox
 
 ######################
 
-MaildirStore local,adloox
-Path ~/Mail/adloox/
-
-IMAPAccount adloox
-AuthMechs LOGIN
-Host %adloox.imap%
-User %adloox.username%
-Pass %adloox.password%
-SSLType IMAPS
-SSLVersions TLSv1.2
-
-IMAPStore adloox
-Account adloox
-
-Channel adloox,allmail
-Master :adloox:"[Gmail]/All Mail"
-Slave :local,adloox:Inbox
-Create Slave
-CopyArrivalDate yes
-
-Channel adloox
-Master :adloox:[Gmail]/
-Slave :local,adloox:
-Create Slave
-CopyArrivalDate yes
-Patterns %
-
-Group adloox
-Channels adloox,allmail
-Channels adloox:Drafts
-
-######################
-
 MaildirStore local,solex
 Path ~/Mail/solex/
 
@@ -175,3 +142,63 @@ Patterns %
 Group solex
 Channels solex,allmail
 Channels solex:Drafts
+
+######################
+
+MaildirStore local,a9g
+Path ~/Mail/a9g/
+
+IMAPAccount a9g
+AuthMechs LOGIN
+Host %a9g.imap%
+User %a9g.username%
+Pass "%a9g.password%"
+SSLType IMAPS
+SSLVersions TLSv1.2
+
+IMAPStore a9g
+Account a9g
+MapInbox Inbox
+
+Channel a9g
+Master :a9g:
+Slave :local,a9g:
+Create Slave
+CopyArrivalDate yes
+Patterns %
+
+Group a9g
+Channels a9g:Inbox,Drafts
+
+######################
+
+MaildirStore local,adloox
+Path ~/Mail/adloox/
+
+IMAPAccount adloox
+AuthMechs LOGIN
+Host %adloox.imap%
+User %adloox.username%
+Pass %adloox.password%
+SSLType IMAPS
+SSLVersions TLSv1.2
+
+IMAPStore adloox
+Account adloox
+
+Channel adloox,allmail
+Master :adloox:"[Gmail]/All Mail"
+Slave :local,adloox:Inbox
+Create Slave
+CopyArrivalDate yes
+
+Channel adloox
+Master :adloox:[Gmail]/
+Slave :local,adloox:
+Create Slave
+CopyArrivalDate yes
+Patterns %
+
+Group adloox
+Channels adloox,allmail
+Channels adloox:Drafts

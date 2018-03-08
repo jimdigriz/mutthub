@@ -17,7 +17,7 @@ set envelope_from_address=%solex.email%
 unset signature
 
 alias me %solex.email% (%name%)
-alternates 'aclouter(\\+[a-zA-Z0-9-]+)?@solex\.io$'
+alternates "aclouter(\\+.+)?@solex\.io$"
 
 my_hdr Organization: Adloox
 

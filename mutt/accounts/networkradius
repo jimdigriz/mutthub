@@ -14,7 +14,7 @@ set envelope_from_address=%networkradius.email%
 unset signature
 
 alias me %networkradius.email% (%name%)
-alternates 'aclouter(\\+[a-zA-Z0-9-]+)?@networkradius\.com$'
+alternates "aclouter(\\+.+)?@networkradius\.com$"
 
 my_hdr Organization: Network RADIUS
 

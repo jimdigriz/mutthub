@@ -17,7 +17,7 @@ set envelope_from_address=%adloox.email%
 unset signature
 
 alias me %adloox.email% (%name%)
-alternates 'aclouter(\\+[a-zA-Z0-9-]+)?@adloox\.com$'
+alternates "aclouter(\\+.+)?@adloox\.com$"
 
 my_hdr Organization: Adloox
 
