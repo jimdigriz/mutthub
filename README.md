@@ -38,7 +38,7 @@ As you amend the configuration files detailed below, you can use the `macros` to
 ## Debian
 
     $ sudo apt-get install -yy --no-install-recommends \
-    	mutt-patched notmuch-mutt msmtp-mta aspell-en \
+    	mutt notmuch-mutt isync msmtp-mta aspell-en \
     	lbdb signify t-prot par isync urlscan
 
 # Configuration
