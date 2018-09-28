@@ -112,39 +112,6 @@ Channels networkradius:Inbox
 
 ######################
 
-MaildirStore local,solex
-Path ~/Mail/solex/
-
-IMAPAccount solex
-AuthMechs LOGIN
-Host %solex.imap%
-User %solex.username%
-Pass %solex.password%
-SSLType IMAPS
-SSLVersions TLSv1.2
-
-IMAPStore solex
-Account solex
-
-Channel solex,allmail
-Master :solex:"[Gmail]/All Mail"
-Slave :local,solex:Inbox
-Create Slave
-CopyArrivalDate yes
-
-Channel solex
-Master :solex:[Gmail]/
-Slave :local,solex:
-Create Slave
-CopyArrivalDate yes
-Patterns %
-
-Group solex
-Channels solex,allmail
-Channels solex:Drafts
-
-######################
-
 MaildirStore local,a9g
 Path ~/Mail/a9g/
 
