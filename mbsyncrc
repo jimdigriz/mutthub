@@ -92,7 +92,6 @@ AuthMechs LOGIN
 Host %networkradius.imap%
 User %networkradius.username%
 Pass %networkradius.password%
-CertificateFile ~/src/mutthub/networkradius.crt
 SSLType IMAPS
 SSLVersions TLSv1.2
 
