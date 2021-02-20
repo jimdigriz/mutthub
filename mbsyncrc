@@ -3,30 +3,30 @@ Expunge Both
 
 ######################
 
-MaildirStore local,test
-Path ~/Mail/test/
-
-IMAPAccount test
-Host %test.imap%
-User %test.username%
-Pass %test.password%
-Tunnel "echo '* OK [CAPABILITY IMAP4rev1 LITERAL+ ID ENABLE AUTH=DIGEST-MD5 AUTH=CRAM-MD5 AUTH=NTLM AUTH=LOGIN AUTH=PLAIN SASL-IR] wormnet.eu Cyrus IMAP v2.4.17-caldav-beta10-Debian-2.4.17+caldav~beta10-18 server ready'; openssl s_client -quiet -connect %test.imap%:143 -starttls imap -tls1_2 | grep --line-buffered -v ^CONNECTED"
-SSLType None
-
-IMAPStore test
-Account test
-MapInbox Inbox
-Trash Trash
-
-Channel test
-Master :test:
-Slave :local,test:
-Create Slave
-CopyArrivalDate yes
-Patterns %
-
-Group test
-Channels test:Inbox,Drafts
+#MaildirStore local,test
+#Path ~/Mail/test/
+#
+#IMAPAccount test
+#Host %test.imap%
+#User %test.username%
+#Pass %test.password%
+#Tunnel "echo '* OK [CAPABILITY IMAP4rev1 LITERAL+ ID ENABLE AUTH=DIGEST-MD5 AUTH=CRAM-MD5 AUTH=NTLM AUTH=LOGIN AUTH=PLAIN SASL-IR] wormnet.eu Cyrus IMAP v2.4.17-caldav-beta10-Debian-2.4.17+caldav~beta10-18 server ready'; openssl s_client -quiet -connect %test.imap%:143 -starttls imap -tls1_2 | grep --line-buffered -v ^CONNECTED"
+#SSLType None
+#
+#IMAPStore test
+#Account test
+#MapInbox Inbox
+#Trash Trash
+#
+#Channel test
+#Master :test:
+#Slave :local,test:
+#Create Slave
+#CopyArrivalDate yes
+#Patterns %
+#
+#Group test
+#Channels test:Inbox,Drafts
 
 ######################
 
@@ -168,3 +168,36 @@ Patterns %
 Group adloox
 Channels adloox,allmail
 Channels adloox:Drafts
+
+######################
+
+MaildirStore local,kx
+Path ~/Mail/kx/
+
+IMAPAccount kx
+AuthMechs LOGIN
+Host %kx.imap%
+User %kx.username%
+Pass %kx.password%
+SSLType IMAPS
+SSLVersions TLSv1.2
+
+IMAPStore kx
+Account kx
+
+Channel kx,allmail
+Master :kx:"[Gmail]/All Mail"
+Slave :local,kx:Inbox
+Create Slave
+CopyArrivalDate yes
+
+Channel kx
+Master :kx:[Gmail]/
+Slave :local,kx:
+Create Slave
+CopyArrivalDate yes
+Patterns %
+
+Group kx
+Channels kx,allmail
+Channels kx:Drafts
