@@ -15,3 +15,5 @@ alias me %digriz.email% (%name%)
 alternates "@digriz\.org\.uk$" "@alex\.digriz\.org\.uk$"
 
 macro index,pager $ "<sync-mailbox><enter-command>set my_wait_key=\$wait_key<enter><enter-command>set wait_key=no<enter><shell-escape>mbsync digriz<enter><enter-command>set wait_key=\$my_wait_key<enter>" "Sync Mailbox"
+
+set pgp_default_key="0x976DFACFBAE2D3F16AE79C0FDE1F3ADBED9EFF6B"

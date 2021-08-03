@@ -40,3 +40,5 @@ unset sig_dashes
 unset signature
 
 macro index,pager $ "<sync-mailbox>" "Sync Mailbox"
+
+unset pgp_default_key
