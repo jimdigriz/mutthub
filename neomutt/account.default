@@ -1,5 +1,4 @@
 unset from
-unset use_envelope_from
 unset envelope_from_address
 
 unalternates *
