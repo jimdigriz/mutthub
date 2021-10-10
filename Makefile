@@ -9,9 +9,9 @@ XDG_CONFIG_HOME ?= $(HOME)/.config
 ACCOUNTS = digriz coremem a9g networkradius
 
 .PHONY: all
-all: $(foreach F,neomuttrc templates/email.html $(foreach A,default $(ACCOUNTS),account.$(A)),$(XDG_CONFIG_HOME)/neomutt/$(F)) $(XDG_CONFIG_HOME)/msmtp/config $(HOME)/.mbsyncrc maildirs
-CLEAN += $(foreach A,$(ACCOUNTS),neomutt/account.$(A))
-DISTCLEAN += $(XDG_CONFIG_HOME)/neomutt $(HOME)/.msmtp.log $(XDG_CONFIG_HOME)/msmtp $(HOME)/.mbsyncrc
+all: $(foreach F,neomuttrc templates/email.html $(foreach A,default $(ACCOUNTS),account.$(A)),$(XDG_CONFIG_HOME)/neomutt/$(F)) $(XDG_CONFIG_HOME)/msmtp/config $(HOME)/.mbsyncrc $(HOME)/.notmuch-config maildirs
+CLEAN += neomutt/neomuttrc $(foreach A,$(ACCOUNTS),neomutt/account.$(A))
+DISTCLEAN += $(XDG_CONFIG_HOME)/neomutt $(HOME)/.msmtp.log $(XDG_CONFIG_HOME)/msmtp $(HOME)/.mbsyncrc $(HOME)/.notmuch-config
 
 .PHONY: clean
 clean:
@@ -32,11 +32,14 @@ neomutt/%: neomutt/%.m4 defines.m4
 	m4 defines.m4 $< > $@
 
 $(HOME)/.mbsyncrc: mbsyncrc
-	@mkdir -p $(@D)
 	touch $@
 	chmod 600 $@
 	cat $< > $@
 CLEAN += mbsyncrc
+
+$(HOME)/.notmuch-config: notmuch-config
+	cp $< $@
+CLEAN += notmuch-config
 
 $(XDG_CONFIG_HOME)/msmtp/config: msmtprc
 	@mkdir -p $(@D)

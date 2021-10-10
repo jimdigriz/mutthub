@@ -13,6 +13,7 @@ You will need to [have git installed on your workstation](http://git-scm.com/boo
         aspell-en \
         isync \
         #lbdb \
+        m4 \
         make
         msmtp-mta \
         muttdown \

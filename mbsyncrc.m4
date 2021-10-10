@@ -3,7 +3,7 @@ SyncState *
 ####
 
 MaildirStore local,digriz
-Path ~/Mail/digriz
+Path ~/Mail/digriz/
 Inbox ~/Mail/digriz
 SubFolders Verbatim
 
@@ -20,6 +20,7 @@ Account digriz
 Channel digriz
 Master :digriz:
 Slave :local,digriz:
+Patterns * !Trash !'Junk Mail' !Notes !'Sent Items
 Sync Pull
 Create Slave
 CopyArrivalDate yes
@@ -27,7 +28,7 @@ CopyArrivalDate yes
 ####
 
 MaildirStore local,coremem
-Path ~/Mail/coremem
+Path ~/Mail/coremem/
 Inbox ~/Mail/coremem
 SubFolders Verbatim
 
@@ -44,6 +45,7 @@ Account coremem
 Channel coremem
 Master :coremem:
 Slave :local,coremem:
+Patterns * !Trash !'Junk Mail' !Notes !'Sent Items
 Sync Pull
 Create Slave
 CopyArrivalDate yes
@@ -51,7 +53,7 @@ CopyArrivalDate yes
 ####
 
 MaildirStore local,a9g
-Path ~/Mail/a9g
+Path ~/Mail/a9g/
 Inbox ~/Mail/a9g
 SubFolders Verbatim
 
@@ -68,6 +70,7 @@ Account a9g
 Channel a9g
 Master :a9g:
 Slave :local,a9g:
+Patterns * !Trash !'Junk Mail' !Notes !'Sent Items
 Sync Pull
 Create Slave
 CopyArrivalDate yes
@@ -75,7 +78,7 @@ CopyArrivalDate yes
 ####
 
 MaildirStore local,networkradius
-Path ~/Mail/networkradius
+Path ~/Mail/networkradius/
 Inbox ~/Mail/networkradius
 SubFolders Verbatim
 
@@ -92,6 +95,7 @@ Account networkradius
 Channel networkradius
 Master :networkradius:
 Slave :local,networkradius:
+Patterns % !Trash !Spam
 Sync Pull
 Create Slave
 CopyArrivalDate yes

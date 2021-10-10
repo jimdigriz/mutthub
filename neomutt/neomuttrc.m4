@@ -35,4 +35,5 @@ macro compose m \
 set text_flowed
 set editor="vim -c 'match ErrorMsg \"\\s\\+$\"' '+setl list tw=72 fo=watqc nojs nosmartindent spell spelllang=en_gb'"
 
-source /etc/t-prot/Muttrc
+source /etc/Muttrc.d/notmuch-mutt.rc
+source /etc/Muttrc.d/t-prot.rc
