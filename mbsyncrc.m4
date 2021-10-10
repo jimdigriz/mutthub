@@ -20,7 +20,7 @@ Account digriz
 Channel digriz
 Master :digriz:
 Slave :local,digriz:
-Patterns * !Trash !'Junk Mail' !Notes !'Sent Items
+Patterns * !Trash !Spam !"Junk Mail" !Notes !"Sent Items"
 Sync Pull
 Create Slave
 CopyArrivalDate yes
@@ -45,7 +45,7 @@ Account coremem
 Channel coremem
 Master :coremem:
 Slave :local,coremem:
-Patterns * !Trash !'Junk Mail' !Notes !'Sent Items
+Patterns * !Trash !Spam !"Junk Mail" !Notes !"Sent Items"
 Sync Pull
 Create Slave
 CopyArrivalDate yes
@@ -70,7 +70,7 @@ Account a9g
 Channel a9g
 Master :a9g:
 Slave :local,a9g:
-Patterns * !Trash !'Junk Mail' !Notes !'Sent Items
+Patterns * !Trash !Spam !"Junk Mail" !Notes !"Sent Items"
 Sync Pull
 Create Slave
 CopyArrivalDate yes
