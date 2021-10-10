@@ -1,74 +1,37 @@
 This project has the moving parts that make up how I handle email, others may find it useful.
 
-## Issues
-
- * use expect/openssl/... to do IMAP idle
-  * ...and splice in and out mbsync into the existing connection
- * formating of email sent is different to how it was saved in editor
- * xargs -0 sh -c 'exec /usr/lib/sendmail -- "$@" < "$FILE.msg"' -f -- < "$FILE.arg"
- * better mailcap
- * improve use of par
- * notmuch support
- * mailing list handling
-  * including the case where server sends me another copy as I am a member (Exchange...)
- * URL extract
- * address book
- * failure to send email, still drops copy in INBOX due to Fcc, leading to dupes
-  * can we Fcc *after* sendmail?
-  * Bcc self a better option?
-  * does it matter once I do background smtp?
- * signature strip written in sed
- * handle scoring
- * whilst composing an email, viewing attachments added breaks if the filename has spaces
- * lbdb changes
-  * remove dupes
-  * sending email, have it ignore the 'from' field
-
 # Preflight
 
 You will need to [have git installed on your workstation](http://git-scm.com/book/en/Getting-Started-Installing-Git).
 
-    $ git clone https://github.com/jimdigriz/mutthub.git
-    $ cd mutthub
- 
-    $ cp example.macros macros
-
-As you amend the configuration files detailed below, you can use the `macros` to handle substitutions for you.
+    git clone https://github.com/jimdigriz/mutthub.git
+    cd mutthub
 
 ## Debian
 
-    $ sudo apt-get install -yy --no-install-recommends \
-    	mutt notmuch-mutt isync msmtp-mta aspell-en \
-    	lbdb signify t-prot par isync urlscan
+    $ sudo apt-get -y install --no-install-recommends \
+        aspell-en \
+        isync \
+#        lbdb \
+        make
+        msmtp-mta \
+        muttdown \
+        neomutt \
+        notmuch-mutt \
+        pandoc \
+        t-prot \
+#        urlscan
 
 # Configuration
 
-## mutt
+Make a copy of [`defines.m4.example`](./defines.m4.example) for yourself and edit `defines.m4` with your own settings:
 
-You should copy `mutt/accounts/_template` to `mutt/accounts/main` as you see fit, to create individual accounts.
+    cp defines.m4.example defines.m4
 
-**N.B.** pay attention to the `# :hook` commands at the top of those files, they do the plumbing
+For your own account customisations you should look to creating your own `neomutt/account.NAME.m4` files.
 
-## mbsync
-
-Edit the end of the file as you see fit.
-
-## msmtp
-
-Edit the end of the file as you see fit.
+Accounts are plumbed in via the [main configuration file](./neomutt/neomuttrc.m4)
 
 # Deploy
 
-    $ ./deploy.sh
-
-You will need to also make sure the top level `~/Mail/<account>` directories exist.
-
-## First Time
-
-You will need to run the following for a first time install:
-
-    $ mkdir ~/.vcards
-    
-    $ sudo cp lbdbwrap /usr/local/bin
-    $ sudo cp sendmailq /usr/local/bin
-    $ sudo cp format-email /usr/local/bin
+    make

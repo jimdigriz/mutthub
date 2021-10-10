@@ -1,4 +1,11 @@
 .*
 !.gitignore
 
-macros
+neomutt/account.*
+!neomutt/account.default
+!neomutt/account.*.m4
+
+defines.m4
+
+msmtprc
+mbsyncrc
