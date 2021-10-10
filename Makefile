@@ -11,6 +11,7 @@ ACCOUNTS = digriz coremem a9g networkradius
 .PHONY: all
 all: $(foreach F,neomuttrc templates/email.html $(foreach A,default $(ACCOUNTS),account.$(A)),$(XDG_CONFIG_HOME)/neomutt/$(F)) $(XDG_CONFIG_HOME)/msmtp/config $(HOME)/.mbsyncrc maildirs
 CLEAN += $(foreach A,$(ACCOUNTS),neomutt/account.$(A))
+DISTCLEAN += $(XDG_CONFIG_HOME)/neomutt $(HOME)/.msmtp.log $(XDG_CONFIG_HOME)/msmtp $(HOME)/.mbsyncrc
 
 .PHONY: clean
 clean:
