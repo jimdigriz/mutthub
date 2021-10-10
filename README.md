@@ -35,3 +35,13 @@ Accounts are plumbed in via the [main configuration file](./neomutt/neomuttrc.m4
 # Deploy
 
     make
+
+## Uninstall
+
+To remove project local files use:
+
+    make clean
+
+To remove the deployed configuration files in your home directory use:
+
+    make distclean
