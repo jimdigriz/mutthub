@@ -12,7 +12,7 @@ You will need to [have git installed on your workstation](http://git-scm.com/boo
     $ sudo apt-get -y install --no-install-recommends \
         aspell-en \
         isync \
-#        lbdb \
+        #lbdb \
         make
         msmtp-mta \
         muttdown \
@@ -20,7 +20,7 @@ You will need to [have git installed on your workstation](http://git-scm.com/boo
         notmuch-mutt \
         pandoc \
         t-prot \
-#        urlscan
+        # urlscan
 
 # Configuration
 
