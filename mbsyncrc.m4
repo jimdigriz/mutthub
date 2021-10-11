@@ -4,7 +4,7 @@ SyncState *
 
 MaildirStore local,digriz
 Path ~/Mail/digriz/
-Inbox ~/Mail/digriz
+Inbox ~/Mail/digriz/INBOX
 SubFolders Verbatim
 
 IMAPAccount digriz
@@ -29,7 +29,7 @@ CopyArrivalDate yes
 
 MaildirStore local,coremem
 Path ~/Mail/coremem/
-Inbox ~/Mail/coremem
+Inbox ~/Mail/coremem/INBOX
 SubFolders Verbatim
 
 IMAPAccount coremem
@@ -54,7 +54,7 @@ CopyArrivalDate yes
 
 MaildirStore local,a9g
 Path ~/Mail/a9g/
-Inbox ~/Mail/a9g
+Inbox ~/Mail/a9g/INBOX
 SubFolders Verbatim
 
 IMAPAccount a9g
@@ -79,7 +79,7 @@ CopyArrivalDate yes
 
 MaildirStore local,networkradius
 Path ~/Mail/networkradius/
-Inbox ~/Mail/networkradius
+Inbox ~/Mail/networkradius/INBOX
 SubFolders Verbatim
 
 IMAPAccount networkradius
