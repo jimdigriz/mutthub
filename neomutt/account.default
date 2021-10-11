@@ -1,4 +1,0 @@
-unset from
-unset envelope_from_address
-
-unalternates *

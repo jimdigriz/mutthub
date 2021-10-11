@@ -4,17 +4,23 @@ set ispell="aspell -e -c"
 set realname="NAME"
 set signature="printf '%s' 'NAME'|"
 
-named-mailboxes \
-  "Personal" +digriz \
-  "coreMem Limited" +coremem \
-  "a9g" +a9g \
-  "Network RADIUS" +networkradius
+set sidebar_short_path
+set sidebar_delim_chars="/"
+set sidebar_folder_indent
+set sidebar_indent_string="  "
 
-folder-hook .             "source ~/.config/neomutt/account.default"
-folder-hook digriz        "source ~/.config/neomutt/account.digriz"
-folder-hook coremem       "source ~/.config/neomutt/account.coremem"
-folder-hook a9g           "source ~/.config/neomutt/account.a9g"
-folder-hook networkradius "source ~/.config/neomutt/account.networkradius"
+bind index,pager B sidebar-toggle-visible
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next
+bind index,pager \Co sidebar-open
+
+folder-hook .               "source ~/.config/neomutt/account.default"
+folder-hook digriz/*        "source ~/.config/neomutt/account.digriz"
+folder-hook coremem/*       "source ~/.config/neomutt/account.coremem"
+folder-hook a9g/*           "source ~/.config/neomutt/account.a9g"
+folder-hook networkradius/* "source ~/.config/neomutt/account.networkradius"
+
+bind pager D purge-message
 
 # https://to.mw/posts/neomutt-markdown-email
 macro compose m \
