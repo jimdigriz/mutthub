@@ -12,6 +12,7 @@ alternates ^DIGRIZ_EMAIL_ENVELOPE$ '@(.*\.)?digriz\.org\.uk$'
 unmailboxes *
 
 named-mailboxes \
+  "Unified INBOX" "notmuch://?query=tag:inbox" \
   "DIGRIZ_NAME" +digriz/INBOX
 
 named-mailboxes '  Drafts' +digriz/Drafts

@@ -12,6 +12,7 @@ alternates ^COREMEM_EMAIL_ENVELOPE$ '@(.*\.)?coremem\.com$'
 unmailboxes *
 
 named-mailboxes \
+  "Unified INBOX" "notmuch://?query=tag:inbox" \
   "DIGRIZ_NAME" +digriz/INBOX \
   "COREMEM_NAME" +coremem/INBOX
 

@@ -11,6 +11,7 @@ unalternates *
 unmailboxes *
 
 named-mailboxes \
+  "Unified INBOX" "notmuch://?query=tag:inbox" \
   "DIGRIZ_NAME" +digriz/INBOX \
   "COREMEM_NAME" +coremem/INBOX \
   "A9G_NAME" +a9g/INBOX \

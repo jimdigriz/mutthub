@@ -5,6 +5,7 @@ set realname="NAME"
 set signature="printf '%s' 'NAME'|"
 set abort_noattach
 
+set sidebar_visible
 set sidebar_short_path
 set sidebar_delim_chars="/"
 set sidebar_folder_indent
@@ -15,11 +16,18 @@ bind index,pager \Cp sidebar-prev
 bind index,pager \Cn sidebar-next
 bind index,pager \Co sidebar-open
 
-folder-hook .               "source ~/.config/neomutt/account.default"
-folder-hook digriz/*        "source ~/.config/neomutt/account.digriz"
-folder-hook coremem/*       "source ~/.config/neomutt/account.coremem"
-folder-hook a9g/*           "source ~/.config/neomutt/account.a9g"
-folder-hook networkradius/* "source ~/.config/neomutt/account.networkradius"
+set spoolfile="Unified INBOX"
+
+folder-hook .                 "source ~/.config/neomutt/account.default"
+folder-hook +digriz/.*        "source ~/.config/neomutt/account.digriz"
+folder-hook +coremem/.*       "source ~/.config/neomutt/account.coremem"
+folder-hook +a9g/.*           "source ~/.config/neomutt/account.a9g"
+folder-hook +networkradius/.* "source ~/.config/neomutt/account.networkradius"
+
+folder-hook .           "set sort=threads"
+folder-hook (Spam|Junk) "set sort=date"
+#folder-hook .           "set use_threads=threads sort=date sort_aux=date"
+#folder-hook (Spam|Junk) "set use_threads=flat sort=date sort_aux=date"
 
 bind pager D purge-message
 
