@@ -2,6 +2,7 @@ unset from
 unset envelope_from_address
 unset postponed
 unset trash
+unset record
 
 unmacro index,pager S
 
