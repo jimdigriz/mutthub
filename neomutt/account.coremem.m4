@@ -8,6 +8,7 @@ macro pager S "<save-message>+Spam<enter>" "file as Spam"
 
 alternates ^COREMEM_EMAIL_ENVELOPE$ '@(.*\.)?coremem\.com$'
 
+####
 unmailboxes *
 
 named-mailboxes \
@@ -29,3 +30,4 @@ named-mailboxes '  Spam' +coremem/Spam
 named-mailboxes \
   "A9G_NAME" +a9g/INBOX \
   "NETWORKRADIUS_NAME" +networkradius/INBOX
+####

@@ -8,6 +8,7 @@ macro pager S "<save-message>+'Junk Mail'<enter>" "file as Spam"
 
 alternates ^DIGRIZ_EMAIL_ENVELOPE$ '@(.*\.)?digriz\.org\.uk$'
 
+####
 unmailboxes *
 
 named-mailboxes \
@@ -22,3 +23,4 @@ named-mailboxes \
   "COREMEM_NAME" +coremem/INBOX \
   "A9G_NAME" +a9g/INBOX \
   "NETWORKRADIUS_NAME" +networkradius/INBOX
+####

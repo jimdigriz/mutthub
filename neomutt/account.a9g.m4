@@ -8,6 +8,7 @@ macro pager S "<save-message>+Spam<enter>" "file as Spam"
 
 alternates ^A9G_EMAIL_ENVELOPE$ 'alex(\+[^@]+)@(.*\.)?a9g\.com$'
 
+####
 unmailboxes *
 
 named-mailboxes \
@@ -23,4 +24,4 @@ named-mailboxes '  Spam' +a9g/Spam
 
 named-mailboxes \
   "NETWORKRADIUS_NAME" +networkradius/INBOX
-
+####
