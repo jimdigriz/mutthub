@@ -1,7 +1,7 @@
 set from=COREMEM_EMAIL
 set envelope_from_address=COREMEM_EMAIL_ENVELOPE
-set postponed=+Drafts
-set trash=+Trash
+set postponed=+coremem/Drafts
+set trash=+coremem/Trash
 
 macro index S "<tag-prefix><enter-command>unset resolve<enter><tag-prefix><clear-flag>N<tag-prefix><enter-command>set resolve<enter><tag-prefix><save-message>+Spam<enter>" "file as Spam"
 macro pager S "<save-message>+Spam<enter>" "file as Spam"
