@@ -18,6 +18,9 @@ bind index,pager \Co sidebar-open
 
 set spoolfile="Unified INBOX"
 
+folder-hook .               "set header_cache=~/.cache/neomutt/header"
+folder-hook (^notmuch:)     "unset header_cache"
+
 folder-hook .               "source ~/.config/neomutt/account.default"
 folder-hook +digriz/        "source ~/.config/neomutt/account.digriz"
 folder-hook +coremem/       "source ~/.config/neomutt/account.coremem"
