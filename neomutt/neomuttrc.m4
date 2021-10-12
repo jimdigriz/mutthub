@@ -18,11 +18,11 @@ bind index,pager \Co sidebar-open
 
 set spoolfile="Unified INBOX"
 
-folder-hook .                 "source ~/.config/neomutt/account.default"
-folder-hook +digriz/.*        "source ~/.config/neomutt/account.digriz"
-folder-hook +coremem/.*       "source ~/.config/neomutt/account.coremem"
-folder-hook +a9g/.*           "source ~/.config/neomutt/account.a9g"
-folder-hook +networkradius/.* "source ~/.config/neomutt/account.networkradius"
+folder-hook .               "source ~/.config/neomutt/account.default"
+folder-hook +digriz/        "source ~/.config/neomutt/account.digriz"
+folder-hook +coremem/       "source ~/.config/neomutt/account.coremem"
+folder-hook +a9g/           "source ~/.config/neomutt/account.a9g"
+folder-hook +networkradius/ "source ~/.config/neomutt/account.networkradius"
 
 folder-hook .           "set sort=threads"
 folder-hook (Spam|Junk) "set sort=date"
