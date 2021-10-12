@@ -4,6 +4,10 @@ set ispell="aspell -e -c"
 set realname="NAME"
 set signature="printf '%s' 'NAME'|"
 set abort_noattach
+set reverse_name
+set fast_reply
+set reply_to
+set include
 
 set sidebar_visible
 set sidebar_short_path
