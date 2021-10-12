@@ -17,7 +17,6 @@ named-mailboxes \
   "COREMEM_NAME" +coremem/INBOX \
   "A9G_NAME" +a9g/INBOX
 
-mailboxes +a9g/INBOX/Solex
 named-mailboxes '  Drafts' +a9g/Drafts
 named-mailboxes '  Archive' +a9g/Archive
 named-mailboxes '  Trash' +a9g/Trash
