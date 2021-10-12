@@ -3,6 +3,7 @@ set use_8bitmime
 set ispell="aspell -e -c"
 set realname="NAME"
 set signature="printf '%s' 'NAME'|"
+set abort_noattach
 
 set sidebar_short_path
 set sidebar_delim_chars="/"
@@ -29,7 +30,7 @@ macro compose m \
 <pipe-message>pandoc -f gfm -t plain -o /tmp/msg.txt<enter>\
 <pipe-message>pandoc -s -f gfm --self-contained -o /tmp/msg.html --resource-path ~/.config/neomutt/templates --template email --metadata title="-"<enter>\
 <enter-command>unset pipe_decode<enter>\
-<enter-command>set wait_key=yes<enter>\
+<enter-command>set wait_key<enter>\
 <attach-file>/tmp/msg.txt<enter>\
 <attach-file>/tmp/msg.html<enter>\
 <tag-entry><previous-entry><tag-entry><group-alternatives>\
