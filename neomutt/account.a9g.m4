@@ -2,6 +2,7 @@ set from=A9G_EMAIL
 set envelope_from_address=A9G_EMAIL_ENVELOPE
 set postponed=+a9g/Drafts
 set trash=+a9g/Trash
+set record=+a9g/Archive
 
 macro index S "<tag-prefix><enter-command>unset resolve<enter><tag-prefix><clear-flag>N<tag-prefix><enter-command>set resolve<enter><tag-prefix><save-message>+Spam<enter>" "file as Spam"
 macro pager S "<save-message>+Spam<enter>" "file as Spam"

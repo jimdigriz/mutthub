@@ -2,6 +2,7 @@ set from=NETWORKRADIUS_EMAIL
 set envelope_from_address=NETWORKRADIUS_EMAIL_ENVELOPE
 set postponed=+networkradius/Drafts
 set trash=+networkradius/Trash
+set record=+networkradius/Archive
 
 macro index,pager S purge-message
 

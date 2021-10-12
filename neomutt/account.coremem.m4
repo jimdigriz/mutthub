@@ -2,6 +2,7 @@ set from=COREMEM_EMAIL
 set envelope_from_address=COREMEM_EMAIL_ENVELOPE
 set postponed=+coremem/Drafts
 set trash=+coremem/Trash
+set record=+coremem/Archive
 
 macro index S "<tag-prefix><enter-command>unset resolve<enter><tag-prefix><clear-flag>N<tag-prefix><enter-command>set resolve<enter><tag-prefix><save-message>+Spam<enter>" "file as Spam"
 macro pager S "<save-message>+Spam<enter>" "file as Spam"
@@ -32,3 +33,7 @@ named-mailboxes \
   "A9G_NAME" +a9g/INBOX \
   "NETWORKRADIUS_NAME" +networkradius/INBOX
 ####
+
+folder-hook +coremem/(INBOX|Archive)/Clients/Adloox "set record=+coremem/Archive/Clients/Adloox"
+folder-hook +coremem/(INBOX|Archive)/Clients/KX "set record=+coremem/Archive/Clients/KX"
+folder-hook +coremem/(INBOX|Archive)/Clients/SOAS "set record=+coremem/Archive/Clients/SOAS"
