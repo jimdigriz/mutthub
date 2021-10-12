@@ -32,7 +32,7 @@ folder-hook (Spam|Junk) "set sort=date"
 #folder-hook .           "set use_threads=threads sort=date sort_aux=date"
 #folder-hook (Spam|Junk) "set use_threads=flat sort=date sort_aux=date"
 
-bind pager D purge-message
+bind index,pager D purge-message
 
 folder-hook .            'macro index,pager A "<enter-command>set sleep_time=0<enter><enter-command>unset resolve<enter><enter-command>unset confirmappend<enter><clear-flag>N<save-message>\<<enter><<enter-command>set confirmappend<enter><enter-command>set resolve<enter><purge-message><enter-command>set delete<enter><sync-mailbox><enter-command>set delete=ask-yes<enter><enter-command>set sleep_time=1<enter>" "Archive message"'
 folder-hook Archive     "unmacro index,pager A"
