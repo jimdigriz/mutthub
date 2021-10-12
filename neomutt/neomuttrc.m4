@@ -34,6 +34,9 @@ folder-hook (Spam|Junk) "set sort=date"
 
 bind pager D purge-message
 
+folder-hook .            'macro index,pager A "<enter-command>set sleep_time=0<enter><enter-command>unset resolve<enter><enter-command>unset confirmappend<enter><clear-flag>N<save-message>\<<enter><<enter-command>set confirmappend<enter><enter-command>set resolve<enter><purge-message><enter-command>set delete<enter><sync-mailbox><enter-command>set delete=ask-yes<enter><enter-command>set sleep_time=1<enter>" "Archive message"'
+folder-hook Archive     "unmacro index,pager A"
+
 # https://to.mw/posts/neomutt-markdown-email
 macro compose m \
 "<enter-command>unset wait_key<enter>\
