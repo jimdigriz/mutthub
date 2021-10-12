@@ -7,7 +7,7 @@ set record=+digriz/Archive
 macro index S "<tag-prefix><enter-command>unset resolve<enter><tag-prefix><clear-flag>N<tag-prefix><enter-command>set resolve<enter><tag-prefix><save-message>+'Junk Mail'<enter>" "file as Spam"
 macro pager S "<save-message>+'Junk Mail'<enter>" "file as Spam"
 
-alternates ^DIGRIZ_EMAIL_ENVELOPE$ '@(.*\.)?digriz\.org\.uk$'
+alternates ^DIGRIZ_EMAIL_ENVELOPE$ @(.*\.)?digriz\.org\.uk$
 
 ####
 unmailboxes *
