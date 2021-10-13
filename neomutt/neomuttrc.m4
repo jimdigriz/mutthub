@@ -8,6 +8,8 @@ set reverse_name
 set fast_reply
 set reply_to
 set include
+set skip_quoted_offset=3
+set time_inc=250
 
 set sidebar_visible
 set sidebar_short_path
@@ -28,6 +30,7 @@ folder-hook (^notmuch:)     "unset header_cache"
 folder-hook .               "source ~/.config/neomutt/account.default"
 folder-hook +digriz/        "source ~/.config/neomutt/account.digriz"
 folder-hook +coremem/       "source ~/.config/neomutt/account.coremem"
+folder-hook +soas/          "source ~/.config/neomutt/account.soas"
 folder-hook +a9g/           "source ~/.config/neomutt/account.a9g"
 folder-hook +networkradius/ "source ~/.config/neomutt/account.networkradius"
 

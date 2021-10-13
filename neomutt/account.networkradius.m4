@@ -4,9 +4,9 @@ set postponed=+networkradius/Drafts
 set trash=+networkradius/Trash
 set record=+networkradius/Archive
 
-macro index,pager S purge-message
+macro index,pager "\Cs" purge-message
 
-alternates ^NETWORKRADIUS_EMAIL_ENVELOPE$ ^aclouter(\+[^@]+)?@networkradius\.com$
+alternates ^aclouter(\+[^@]+)?@networkradius\.com$
 
 ####
 unmailboxes *
@@ -15,6 +15,7 @@ named-mailboxes \
   "Unified INBOX" "notmuch://?query=tag:inbox" \
   "DIGRIZ_NAME" +digriz/INBOX \
   "COREMEM_NAME" +coremem/INBOX \
+  "SOAS_NAME" +soas/INBOX \
   "A9G_NAME" +a9g/INBOX \
   "NETWORKRADIUS_NAME" +networkradius/INBOX
 

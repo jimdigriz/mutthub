@@ -52,6 +52,31 @@ CopyArrivalDate yes
 
 ####
 
+MaildirStore local,soas
+Path ~/Mail/soas/
+Inbox ~/Mail/soas/INBOX
+SubFolders Verbatim
+
+IMAPAccount soas
+Host SOAS_SERVER_IMAP
+User SOAS_SERVER_IMAP_USERNAME
+Pass SOAS_SERVER_IMAP_PASSWORD
+SSLType IMAPS
+SSLVersions TLSv1.2
+
+IMAPStore soas
+Account soas
+
+Channel soas
+Master :soas:
+Slave :local,soas:
+Patterns * !Calendar !Calendar/* !Contacts !"Conversation History" !Journal !Notes !Outbox !Tasks
+Sync Pull
+Create Slave
+CopyArrivalDate yes
+
+####
+
 MaildirStore local,a9g
 Path ~/Mail/a9g/
 Inbox ~/Mail/a9g/INBOX
