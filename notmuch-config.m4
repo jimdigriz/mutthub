@@ -51,8 +51,8 @@ primary_email=DIGRIZ_EMAIL
 other_email=COREMEM_EMAIL;NETWORKRADIUS_EMAIL;A9G_EMAIL;ac56@soas.ac.uk;
 
 [new]
-tags=unread;inbox;
-ignore=
+tags=new;
+ignore=Trash;Junk Mail;Spam;Deleted Items;
 
 # Search configuration
 #
