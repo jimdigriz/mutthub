@@ -13,7 +13,7 @@ alternates ^ac56(\+[^@]+)?@soas\.ac\.uk$
 unmailboxes *
 
 named-mailboxes \
-  "Unified INBOX" "notmuch://?query=tag:inbox" \
+  "Unified INBOX" "notmuch://?query=folder:/\/INBOX$/" \
   "DIGRIZ_NAME" +digriz/INBOX \
   "COREMEM_NAME" +coremem/INBOX \
   "SOAS_NAME" +soas/INBOX

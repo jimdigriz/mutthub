@@ -13,7 +13,7 @@ alternates @(.*\.)?digriz\.org\.uk$
 unmailboxes *
 
 named-mailboxes \
-  "Unified INBOX" "notmuch://?query=tag:inbox" \
+  "Unified INBOX" "notmuch://?query=folder:/\/INBOX$/" \
   "DIGRIZ_NAME" +digriz/INBOX
 
 named-mailboxes '  Drafts' +digriz/Drafts

@@ -13,7 +13,7 @@ alternates ^alex(\+[^@]+)?@(.*\.)?a9g\.com$
 unmailboxes *
 
 named-mailboxes \
-  "Unified INBOX" "notmuch://?query=tag:inbox" \
+  "Unified INBOX" "notmuch://?query=folder:/\/INBOX$/" \
   "DIGRIZ_NAME" +digriz/INBOX \
   "COREMEM_NAME" +coremem/INBOX \
   "SOAS_NAME" +soas/INBOX \
