@@ -7,10 +7,10 @@ DISTCLEAN =
 XDG_CONFIG_HOME ?= $(HOME)/.config
 
 .PHONY: all
-all: $(foreach F,neomuttrc templates/email.html $(basename $(notdir $(wildcard neomutt/account.*.m4))),$(XDG_CONFIG_HOME)/neomutt/$(F)) $(XDG_CONFIG_HOME)/msmtp/config $(HOME)/.mbsyncrc $(HOME)/.notmuch-config maildirs
+all: $(foreach F,neomuttrc templates/email.html $(basename $(notdir $(wildcard neomutt/account.*.m4))),$(XDG_CONFIG_HOME)/neomutt/$(F)) $(XDG_CONFIG_HOME)/msmtp/config $(HOME)/.mbsyncrc $(HOME)/.notmuch-config $(XDG_CONFIG_HOME)/afew/config maildirs
 	notmuch new
 CLEAN += neomutt/neomuttrc $(basename $(wildcard neomutt/account.*.m4))
-DISTCLEAN += $(XDG_CONFIG_HOME)/neomutt $(HOME)/.msmtp.log $(XDG_CONFIG_HOME)/msmtp $(HOME)/.mbsyncrc $(HOME)/.notmuch-config
+DISTCLEAN += $(XDG_CONFIG_HOME)/neomutt $(HOME)/.msmtp.log $(XDG_CONFIG_HOME)/msmtp $(HOME)/.mbsyncrc $(XDG_CONFIG_HOME)/afew $(HOME)/.notmuch-config
 
 .PHONY: clean
 clean:
@@ -46,6 +46,10 @@ $(XDG_CONFIG_HOME)/msmtp/config: msmtprc
 	chmod 600 $@
 	cat $< > $@
 CLEAN += msmtprc
+
+$(XDG_CONFIG_HOME)/afew/config: afew.config
+	@mkdir -p $(@D)
+	cp $< $@
 
 .PHONY: maildirs
 maildirs: mbsyncrc

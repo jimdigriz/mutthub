@@ -10,6 +10,7 @@ You will need to [have git installed on your workstation](http://git-scm.com/boo
 ## Debian
 
     $ sudo apt-get -y install --no-install-recommends \
+        afew \
         aspell-en \
         isync \
         #lbdb \
