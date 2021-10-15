@@ -7,7 +7,7 @@ set record=+coremem/Archive
 macro index "\Cs" "<tag-prefix><enter-command>unset resolve<enter><tag-prefix><clear-flag>N<tag-prefix><enter-command>set resolve<enter><tag-prefix><save-message>+Spam<enter>" "file as Spam"
 macro pager "\Cs" "<save-message>+Spam<enter>" "file as Spam"
 
-alternates @(.*\.)?coremem\.com$
+alternates @([^@]+\\.)?coremem\\.com$
 
 ####
 unmailboxes *

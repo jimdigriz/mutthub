@@ -7,7 +7,7 @@ set record=+digriz/Archive
 macro index "\Cs" "<tag-prefix><enter-command>unset resolve<enter><tag-prefix><clear-flag>N<tag-prefix><enter-command>set resolve<enter><tag-prefix><save-message>+'Junk Mail'<enter>" "file as Spam"
 macro pager "\Cs" "<save-message>+'Junk Mail'<enter>" "file as Spam"
 
-alternates @(.*\.)?digriz\.org\.uk$
+alternates @([^@]+\\.)?digriz\\.org\\.uk$
 
 ####
 unmailboxes *
@@ -23,6 +23,7 @@ named-mailboxes '  Spam' +'digriz/Junk Mail'
 
 named-mailboxes \
   "COREMEM_NAME" +coremem/INBOX \
+  "SOAS_NAME" +soas/INBOX \
   "A9G_NAME" +a9g/INBOX \
   "NETWORKRADIUS_NAME" +networkradius/INBOX
 ####

@@ -6,7 +6,7 @@ set record=+networkradius/Archive
 
 macro index,pager "\Cs" purge-message
 
-alternates ^aclouter(\+[^@]+)?@networkradius\.com$
+alternates ^aclouter(\\+[^@]+)?@networkradius\\.com$
 
 ####
 unmailboxes *

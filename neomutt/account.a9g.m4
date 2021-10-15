@@ -7,7 +7,7 @@ set record=+a9g/Archive
 macro index "\Cs" "<tag-prefix><enter-command>unset resolve<enter><tag-prefix><clear-flag>N<tag-prefix><enter-command>set resolve<enter><tag-prefix><save-message>+Spam<enter>" "file as Spam"
 macro pager "\Cs" "<save-message>+Spam<enter>" "file as Spam"
 
-alternates ^alex(\+[^@]+)?@(.*\.)?a9g\.com$
+alternates ^alex(\\+[^@]+)?@([^@]+\\.)?a9g\\.com$
 
 ####
 unmailboxes *
