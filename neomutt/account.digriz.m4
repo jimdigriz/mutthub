@@ -2,7 +2,7 @@ set from=DIGRIZ_EMAIL
 set envelope_from_address=DIGRIZ_EMAIL_ENVELOPE
 set postponed=+digriz/Drafts
 set trash=+digriz/Trash
-set record=+digriz/Archive
+set record=+digriz/INBOX
 
 macro index "\Cs" "<tag-prefix><enter-command>unset resolve<enter><tag-prefix><clear-flag>N<tag-prefix><enter-command>set resolve<enter><tag-prefix><save-message>+'Junk Mail'<enter>" "file as Spam"
 macro pager "\Cs" "<save-message>+'Junk Mail'<enter>" "file as Spam"
