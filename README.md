@@ -1,49 +1,36 @@
-This project has the moving parts that make up how I handle email, others may find it useful.
+Communications configuration centering around [`mutt`](http://mutt.org/).
 
 # Preflight
 
-You will need to [have git installed on your workstation](http://git-scm.com/book/en/Getting-Started-Installing-Git).
+Instructions for Debian 'trixie' 13:
 
-    git clone https://github.com/jimdigriz/mutthub.git
-    cd mutthub
+    apt install --no-install-recommends \
+    	aspell-en \
+    	neomutt \
+    	notmuch \
+    	lua \
+    	lua-basexx \
+    	pandoc \
+    	polkitd \
+    	python3 \
+    	python3-dateparser \
+    	swayimg \
+    	t-prot \
+    	vim \
+    	w3m \
+    	w3m-img
 
-## Debian
+    # pandoc is linked with Lua 5.4 so we have to symlink it in
+    ln -s /usr/share/lua/5.2/basexx.lua
 
-    $ sudo apt-get -y install --no-install-recommends \
-        afew \
-        aspell-en \
-        isync \
-        #lbdb \
-        m4 \
-        make
-        msmtp-mta \
-        muttdown \
-        neomutt \
-        notmuch-mutt \
-        pandoc \
-        t-prot \
-        # urlscan
-
-# Configuration
-
-Make a copy of [`defines.m4.example`](./defines.m4.example) for yourself and edit `defines.m4` with your own settings:
-
-    cp defines.m4.example defines.m4
-
-For your own account customisations you should look to creating your own `neomutt/account.NAME.m4` files.
-
-Accounts are plumbed in via the [main configuration file](./neomutt/neomuttrc.m4)
+**N.B.** alternatively just download [`basexx.lua`](https://github.com/aiq/basexx/blob/master/lib/basexx.lua) manually
 
 # Deploy
 
+Copy `defines.m4.example` to `defines.m4` and edit with credentials. Finally run:
+
     make
 
-## Uninstall
+# Troubleshooting
 
-To remove project local files use:
-
-    make clean
-
-To remove the deployed configuration files in your home directory use:
-
-    make distclean
+    journalctl --user -u mbsync.service -f

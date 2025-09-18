@@ -1,56 +1,61 @@
 SHELL = /bin/sh
+MAKEFLAGS += --no-builtin-rules
+.SUFFIXES:
 .DELETE_ON_ERROR:
 
-CLEAN = 
-DISTCLEAN = 
-
 XDG_CONFIG_HOME ?= $(HOME)/.config
+XDG_STATE_HOME ?= $(HOME)/.local/state
+
+NEOMUTTRC = $(XDG_CONFIG_HOME)/neomutt/neomuttrc
+ISYNCRC = $(XDG_CONFIG_HOME)/isyncrc
+MSMTP = $(XDG_CONFIG_HOME)/msmtp/config
+MAILCAP = $(HOME)/.mailcap
+SYSTEMD_USER = $(XDG_CONFIG_HOME)/systemd/user
+
+UNITS = $(wildcard systemd/*.timer systemd/*.service)
+
+TARGETS  = $(NEOMUTTRC) $(ISYNCRC) $(MSMTP) $(MAILCAP)
+TARGETS += $(basename $(wildcard neomutt/*.rc.m4))
+TARGETS += $(foreach U,$(notdir $(UNITS)),$(SYSTEMD_USER)/$(U))
 
 .PHONY: all
-all: $(foreach F,neomuttrc templates/email.html $(basename $(notdir $(wildcard neomutt/account.*.m4))),$(XDG_CONFIG_HOME)/neomutt/$(F)) $(XDG_CONFIG_HOME)/msmtp/config $(HOME)/.mbsyncrc $(HOME)/.notmuch-config $(XDG_CONFIG_HOME)/afew/config maildirs
-	notmuch new
-CLEAN += neomutt/neomuttrc $(basename $(wildcard neomutt/account.*.m4))
-DISTCLEAN += $(XDG_CONFIG_HOME)/neomutt $(HOME)/.msmtp.log $(XDG_CONFIG_HOME)/msmtp $(HOME)/.mbsyncrc $(XDG_CONFIG_HOME)/afew $(HOME)/.notmuch-config
+all: $(TARGETS)
+	loginctl enable-linger
+	systemctl --user enable $(UNITS)
+	systemctl --user start mbsync.timer
 
 .PHONY: clean
 clean:
-	rm -rf $(CLEAN)
+	systemctl --user disable --now $(notdir $(UNITS)) || true
+	systemctl --user daemon-reload
+	find $(HOME) -mindepth 1 -maxdepth 1 -type f -name '.neomuttdebug*' -delete
+	rm -f $(TARGETS)
 
 .PHONY: distclean
 distclean: clean
-	rm -rf $(DISTCLEAN)
+	rm -rf '$(HOME)/.local/state/isync'
+	rm -rf '$(HOME)/.cache/mutthub/hcache'
 
-$(XDG_CONFIG_HOME)/neomutt/%: neomutt/%
-	@mkdir -p $(@D)
-	cp $< $@
+%: defines.m4 %.m4
+	umask 077 && m4 -D PWD='$(PWD)' -D FQDN=$(shell hostname) $^ > $@
 
-neomutt/%: neomutt/%.m4 defines.m4
-	m4 defines.m4 $< > $@
+$(NEOMUTTRC): neomuttrc
+	mkdir -p -m 700 $(@D)
+	ln -f -s -r $^ $@
 
-%: %.m4 defines.m4
-	m4 defines.m4 $< > $@
+$(ISYNCRC): isyncrc
+	mkdir -p -m 700 $(@D)
+	ln -f -s -r $^ $@
 
-$(HOME)/.mbsyncrc: mbsyncrc
-	touch $@
-	chmod 600 $@
-	cat $< > $@
-CLEAN += mbsyncrc
+# use cp over ln due to AppArmor
+$(MSMTP): msmtp
+	mkdir -p -m 700 $(@D)
+	cp -f $^ $@
 
-$(HOME)/.notmuch-config: notmuch-config
-	cp $< $@
-CLEAN += notmuch-config
+$(MAILCAP): mailcap
+	ln -f -s -r $^ $@
 
-$(XDG_CONFIG_HOME)/msmtp/config: msmtprc
-	@mkdir -p $(@D)
-	touch $@
-	chmod 600 $@
-	cat $< > $@
-CLEAN += msmtprc
-
-$(XDG_CONFIG_HOME)/afew/config: afew.config
-	@mkdir -p $(@D)
-	cp $< $@
-
-.PHONY: maildirs
-maildirs: mbsyncrc
-	@cat $< | sed -ne 's/^Path // p' | sed -e 's~\~~$(HOME)~g' | sort -u | xargs -r mkdir -p
+$(SYSTEMD_USER)/%: systemd/%
+	mkdir -p -m 700 $(@D)
+	ln -f -s -r -t $(@D) $^
+	systemctl --user daemon-reload
