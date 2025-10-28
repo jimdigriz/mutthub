@@ -38,4 +38,4 @@ mailboxes -label "DIGRIZ_NAME" -poll -notify +DIGRIZ_EMAIL/INBOX
 mailboxes -label "COREMEM_NAME" -poll -notify +COREMEM_EMAIL/INBOX
 mailboxes -label "KX_NAME" -poll -notify +KX_EMAIL/INBOX
 
-reply-hook ~h'list-id:\\s*' 'unset record'
+send-hook ~h'list-id:\\s*' 'unset record'

@@ -14,7 +14,7 @@ mailboxes +INBOX +Archive "+Mailing Lists.IETF.emu" "+Mailing Lists.IETF.radext"
 
 subscribe @ietf.org
 
-reply-hook ~h'list-id:\\s*.*\\.ietf\\.org>' 'set from=alex+ietf@coremem.com'
+send-hook ~h'list-id:\\s*.*\\.ietf\\.org>' 'set from=alex+ietf@coremem.com'
 
 folder-hook '^+Mailing Lists\\.'	'set content_type="text/plain"'
 folder-hook '^+Mailing Lists\\.'	'set text_flowed'
