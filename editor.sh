@@ -43,7 +43,7 @@ sed -e '/^> > On .* wrote:$/ d; /^> > > / d' "$M" \
 mv "$M.tmp" "$M"
 
 # ...and now add back in the attribution, signature and indent strings
-{ printf '\n%s\n' "$A"; sed -e 's/^/> /' "$M"; printf '\n%s' "$S"; } > "$M.tmp"
+{ test ! -s "$M" || printf '\n'; printf '%s\n' "$A"; sed -e 's/^/> /' "$M"; printf '\n%s' "$S"; } > "$M.tmp"
 mv "$M.tmp" "$M"
 
 CHKSUM=$(openssl dgst -md5 -r "$M" | awk '{ print $M }')
