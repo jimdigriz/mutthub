@@ -10,11 +10,27 @@ set maildir_trash=yes
 
 alternates ^patsubst(COREMEM_SERVER_USERNAME, `\.', `\\\&')$ patsubst(patsubst(COREMEM_EMAIL, `^.*\(@.*\)$', `\1'), `\.', `\\\&')$ ^alex=2Bietf=40coremem\.com@dmarc\.ietf\.org$
 
-mailboxes +INBOX +Archive "+Mailing Lists.IETF.emu" "+Mailing Lists.IETF.radext" "+Mailing Lists.IETF.Meeting" "+Mailing Lists.freeradius-users" "+Mailing Lists.hostapd"
+mailboxes +INBOX
+mailboxes +INBOX.Clients.Adloox
+mailboxes +INBOX.Clients.KX
+mailboxes +INBOX.Clients.NetworkRADIUS
+mailboxes +INBOX.Clients.Radiator
+mailboxes +INBOX.Clients.SOAS
+mailboxes +Archive
+mailboxes +Archive.Clients.Adloox
+mailboxes +Archive.Clients.KX
+mailboxes +Archive.Clients.NetworkRADIUS
+mailboxes +Archive.Clients.Radiator
+mailboxes +Archive.Clients.SOAS
+mailboxes "+Mailing Lists.IETF.emu"
+mailboxes "+Mailing Lists.IETF.radext"
+mailboxes "+Mailing Lists.IETF.Meeting"
+mailboxes "+Mailing Lists.freeradius-users"
+mailboxes "+Mailing Lists.hostapd"
 
 subscribe @ietf.org
 
-send-hook ~h'list-id:\\s*.*\\.ietf\\.org>' 'set from=alex+ietf@coremem.com'
+reply-hook ~h'list-id:\\s*.*\\.ietf\\.org>' 'set from=alex+ietf@coremem.com'
 
 folder-hook '^+Mailing Lists\\.'	'set content_type="text/plain"'
 folder-hook '^+Mailing Lists\\.'	'set text_flowed'

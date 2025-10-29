@@ -49,7 +49,7 @@ Trash Trash
 Channel coremem
 Near :coremem:
 Far :COREMEM_EMAIL:
-Patterns INBOX Archive Trash Archive/Clients/% "!Mailing Lists" "Mailing Lists/%" "!Mailing Lists/IETF" "Mailing Lists/IETF/%"
+Patterns INBOX Archive Trash INBOX/Clients/% Archive/Clients/% "!Mailing Lists" "Mailing Lists/%" "!Mailing Lists/IETF" "Mailing Lists/IETF/%"
 Create Near
 CopyArrivalDate yes
 Expunge Near

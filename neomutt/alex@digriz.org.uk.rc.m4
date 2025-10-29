@@ -10,4 +10,5 @@ set maildir_trash=yes
 
 alternates ^patsubst(DIGRIZ_SERVER_USERNAME, `\.', `\\\&')$ patsubst(patsubst(DIGRIZ_EMAIL, `^.*\(@.*\)$', `\1'), `\.', `\\\&')$
 
-mailboxes +INBOX +Archive
+mailboxes +INBOX
+mailboxes +Archive

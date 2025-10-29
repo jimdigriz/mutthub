@@ -10,7 +10,8 @@ set maildir_trash=yes
 
 alternates ^patsubst(patsubst(KX_EMAIL, `^\(.*\)\(@.*\)$', `\1+.*\2'), `\.', `\\\&')$
 
-mailboxes +INBOX +Archive
+mailboxes +INBOX
+mailboxes +Archive
 
 set display_filter='/bin/sh PWD/format-email.sh -f m365 -t'
 macro generic \e0 ":set display_filter='/bin/sh PWD/format-email.sh -f m365'" "Turn TOFU protection off"

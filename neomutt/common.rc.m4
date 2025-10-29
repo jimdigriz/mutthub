@@ -2,6 +2,7 @@ set abort_noattach=ask-yes
 set fast_reply=yes
 set header_cache=~/.cache/mutthub/hcache/
 set pager_index_lines=10
+set pager_stop
 set pager_read_delay=5
 set use_domain=no
 set use_threads=threads sort=last-date sort_aux=date
@@ -38,4 +39,4 @@ mailboxes -label "DIGRIZ_NAME" -poll -notify +DIGRIZ_EMAIL/INBOX
 mailboxes -label "COREMEM_NAME" -poll -notify +COREMEM_EMAIL/INBOX
 mailboxes -label "KX_NAME" -poll -notify +KX_EMAIL/INBOX
 
-send-hook ~h'list-id:\\s*' 'unset record'
+reply-hook ~h'list-id:\\s*' 'unset record'
