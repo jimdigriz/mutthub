@@ -6,6 +6,7 @@ MAKEFLAGS += --no-builtin-rules
 XDG_CONFIG_HOME ?= $(HOME)/.config
 XDG_STATE_HOME ?= $(HOME)/.local/state
 
+SIGNATURE = $(HOME)/.signature
 NEOMUTTRC = $(XDG_CONFIG_HOME)/neomutt/neomuttrc
 ISYNCRC = $(XDG_CONFIG_HOME)/isyncrc
 MSMTP = $(XDG_CONFIG_HOME)/msmtp/config
@@ -14,7 +15,7 @@ SYSTEMD_USER = $(XDG_CONFIG_HOME)/systemd/user
 
 UNITS = $(wildcard systemd/*.timer systemd/*.service)
 
-TARGETS  = $(NEOMUTTRC) $(ISYNCRC) $(MSMTP) $(MAILCAP)
+TARGETS  = $(SIGNATURE) $(NEOMUTTRC) $(ISYNCRC) $(MSMTP) $(MAILCAP)
 TARGETS += $(basename $(wildcard neomutt/*.rc.m4))
 TARGETS += $(foreach U,$(notdir $(UNITS)),$(SYSTEMD_USER)/$(U))
 
@@ -38,6 +39,10 @@ distclean: clean
 
 %: defines.m4 %.m4
 	umask 077 && m4 -D PWD='$(PWD)' -D FQDN=$(shell hostname) $^ > $@
+
+$(SIGNATURE): signature
+	mkdir -p -m 700 $(@D)
+	ln -f -s -r $^ $@
 
 $(NEOMUTTRC): neomuttrc
 	mkdir -p -m 700 $(@D)

@@ -33,7 +33,7 @@ set ispell="exec aspell -e -c"
 set text_flowed=no
 
 # mailcap 'edit=' used as this only applies to text/plain and not text/markdown
-set editor="exec /bin/sh PWD/editor.sh"
+set editor="exec /bin/sh PWD/editor.sh -p"
 
 mailboxes -label "DIGRIZ_NAME" -poll -notify +DIGRIZ_EMAIL/INBOX
 mailboxes -label "COREMEM_NAME" -poll -notify +COREMEM_EMAIL/INBOX

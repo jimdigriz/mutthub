@@ -24,11 +24,16 @@ if [ ! "${PARG:-}" ]; then
 	sed -e '1 d; s/^> //;' "$1" > "$1.tmp"
 	mv "$1.tmp" "$1"
 
+	# preserve the signature seperately
+	S=$(tail -n2 "$1")
+	head -n -2 "$1" > "$1.tmp"
+	mv "$1.tmp" "$1"
+
 	/bin/sh "$DIR/format-email.sh" ${FARG:+-f $FARG} < "$1" > "$1.tmp"
 	mv "$1.tmp" "$1"
 
-	# ...and now add back in the attribution and indent strings
-	{ echo "$A"; sed -e 's/^/> /;' "$1"; } > "$1.tmp"
+	# ...and now add back in the attribution, signature and indent strings
+	{ echo "$A"; sed -e 's/^/> /;' "$1"; echo "$S"; } > "$1.tmp"
 	mv "$1.tmp" "$1"
 fi
 
