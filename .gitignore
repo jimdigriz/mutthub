@@ -6,5 +6,6 @@ defines.m4
 neomuttrc
 isyncrc
 msmtp
+signature
 
 basexx.lua
