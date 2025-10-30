@@ -6,7 +6,7 @@ set folder=+DIGRIZ_EMAIL
 set spool_file=+INBOX
 set record=+INBOX
 set trash=+Trash
-set maildir_trash=yes
+set maildir_trash
 
 alternates ^patsubst(DIGRIZ_SERVER_USERNAME, `\.', `\\\&')$ patsubst(patsubst(DIGRIZ_EMAIL, `^.*\(@.*\)$', `\1'), `\.', `\\\&')$
 

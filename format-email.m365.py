@@ -18,6 +18,7 @@ REPLY_MAGIC = '\x1E'
 GARBAGE = [
     r'^_{16,}$',                                      # <hr/>
     r'^CAUTION: ',                                    # O365 warning
+    r'^\[External Email. Be cautious of content\]$',  # O365 warning
     r'^Sent from Outlook for ',                       # spam
     r'https://aka.ms/LearnAboutSenderIdentification'  # silly inlined warning
 ]

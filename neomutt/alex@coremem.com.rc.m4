@@ -6,9 +6,11 @@ set folder=+COREMEM_EMAIL
 set spool_file=+INBOX
 set record=+INBOX
 set trash=+Trash
-set maildir_trash=yes
+set maildir_trash
 
 alternates ^patsubst(COREMEM_SERVER_USERNAME, `\.', `\\\&')$ patsubst(patsubst(COREMEM_EMAIL, `^.*\(@.*\)$', `\1'), `\.', `\\\&')$ ^alex=2Bietf=40coremem\.com@dmarc\.ietf\.org$
+
+my_hdr Organization: coreMem Limited
 
 mailboxes +INBOX
 mailboxes +INBOX.Clients.Adloox

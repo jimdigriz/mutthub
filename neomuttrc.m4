@@ -1,6 +1,6 @@
 ignore *
-unignore from: subject: to: cc: date:
-hdr_order date: from: to: cc: subject:
+unignore date: subject: from: to: cc: organization: user-agent:
+hdr_order date: subject: from: to: cc: organization: user-agent:
 
 unattachments +A */.*
 attachments   +A */.*
@@ -31,7 +31,7 @@ color body cyan default "(\(19|20\)?[0-9]{2}[/.][01]?[0-9][/.][0123]?[0-9]|[0123
 color body cyan default "((Sun(day)?|Mon(day)?|Tue(sday)?|Wed(nesday)?|Thu(sday)?|Fri(day)?|Sat(urday)?),? +)?(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|June?|July?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)[ .]+[0-9]{1,2}(st|nd|rd|th)?,?( +(19|20)[0-9]{2}(,?( at)? [0-9]{1,2}:[0-9]{2}(:[0-9]{2})?( ?(AM|PM|am|pm))?( +[+-][0-9]{4})?)?)?"
 color body cyan default "((Sun(day)?|Mon(day)?|Tue(sday)?|Wed(nesday)?|Thu(sday)?|Fri(day)?|Sat(urday)?),? +)?[0-9]{1,2}(st|nd|rd|th)?[ .]+(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|June?|July?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?),?( +(19|20)?[0-9]{2})?(( at)? [0-9]{1,2}:[0-9]{2}(:[0-9]{2})?( ?(AM|PM|am|pm))?( +[+-][0-9]{4})?)?"
 
-folder-hook . 'reset all; unmailboxes *; unsubscribe *; source PWD/neomutt/common.rc'
+folder-hook . 'reset all; unmailboxes *; unsubscribe *; unmy_hdr *; source PWD/neomutt/common.rc'
 folder-hook ~/Mail/patsubst(DIGRIZ_EMAIL, `\.', `\\\&')/? source PWD/neomutt/DIGRIZ_EMAIL.rc
 folder-hook ~/Mail/patsubst(COREMEM_EMAIL, `\.', `\\\&')/? source PWD/neomutt/COREMEM_EMAIL.rc
 folder-hook ~/Mail/patsubst(KX_EMAIL, `\.', `\\\&')/? source PWD/neomutt/KX_EMAIL.rc
