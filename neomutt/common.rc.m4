@@ -21,7 +21,7 @@ set auto_edit
 set maildir_header_cache_verify=no
 set time_inc=100
 set tilde
-set new_mail_command="notify-send --icon=/usr/share/icons/hicolor/256x256/apps/neomutt.png \"You've got Mail\" '%b mailbox(es )with new messages.' &"
+set new_mail_command="notify-send --icon=/usr/share/icons/hicolor/256x256/apps/neomutt.png \"You've got Mail\" '%b mailbox(es) with new messages.' &"
 
 set sendmail="msmtp"
 set realname="Alexander Clouter"
