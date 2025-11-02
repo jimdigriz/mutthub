@@ -4,6 +4,8 @@ set -eu
 
 DIR=$(dirname $(readlink -f "$0"))
 
+: ${TPROT_EXTRA:=--max-lines=10000 -c1}
+
 while getopts f:t F; do
 	case $F in
 	f)	FARG=$OPTARG;;
@@ -13,7 +15,7 @@ done
 shift $((OPTIND - 1))
 
 F="cat"
-[ -z "${TARG:-}" ] || F="${TARG} | ${F}"
+[ -z "${TARG:-}" ] || F="${TARG}${TPROT_EXTRA:+ $TPROT_EXTRA} | ${F}"
 case "${FARG:-}" in
 "")	;;
 m365)	F="/usr/bin/env python3 '$DIR/format-email.m365.py' | ${F}";;
