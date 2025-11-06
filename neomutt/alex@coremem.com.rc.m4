@@ -34,7 +34,7 @@ subscribe @ietf.org
 
 reply-hook ~h'list-id:\\s*.*\\.ietf\\.org>' 'set from=alex+ietf@coremem.com'
 
-folder-hook '^+Mailing Lists\\.'	'set content_type="text/plain"'
-folder-hook '^+Mailing Lists\\.'	'set text_flowed'
-folder-hook '^+Mailing Lists\\.'	'set editor="exec /bin/sh PWD/editor.sh -p"'
-folder-hook '^+Mailing Lists\\.IETF\\.'	'set from=alex+ietf@coremem.com'
+folder-hook '+Mailing Lists\.'		'set content_type="text/plain"'
+folder-hook '+Mailing Lists\.'		'set text_flowed'
+folder-hook '+Mailing Lists\.'		'set editor="exec /bin/sh PWD/editor.sh -p"'
+folder-hook '+Mailing Lists\.IETF\.'	'set from=alex+ietf@coremem.com'

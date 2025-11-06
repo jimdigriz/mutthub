@@ -4,7 +4,7 @@ set header_cache=~/.cache/mutthub/hcache/
 set pager_context=1
 set pager_index_lines=10
 set pager_stop
-set pager_read_delay=5
+set pager_read_delay=3
 set sleep_time=0
 set mail_check=60
 set beep=no
@@ -14,6 +14,7 @@ set use_threads=threads sort=last-date sort_aux=date
 set strict_threads
 set honor_disposition
 set preferred_languages=en
+set confirm_append=no
 set include
 set delete
 set implicit_auto_view
@@ -51,6 +52,8 @@ set text_flowed=no
 
 # mailcap 'edit=' used as this only applies to text/plain and not text/markdown
 set editor="exec /bin/sh PWD/editor.sh -p"
+
+set index_format="%4C %Z %{%b %d} %-15.15F (%<l?%4l&%4c>) %s"
 
 mailboxes -label "DIGRIZ_NAME" -poll -notify +DIGRIZ_EMAIL/INBOX
 mailboxes -label "COREMEM_NAME" -poll -notify +COREMEM_EMAIL/INBOX

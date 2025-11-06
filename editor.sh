@@ -49,7 +49,7 @@ mv "$M.tmp" "$M"
 CHKSUM=$(openssl dgst -md5 -r "$M" | awk '{ print $M }')
 
 # https://rinzewind.org/blog-en/2017/a-small-trick-for-sending-flowed-mail-in-mutt-with-vim.html
-vim -c 'setlocal fo=awnqptc comments=nb:> filetype=mail wm=0 tw=72 nonumber digraph list nojs nosmartindent spell spelllang=en_gb' "$M"
+vim -c 'setlocal fo=awnqptc comments=nb:> filetype=mail wm=0 tw=72 nonumber nodigraph list nojs nosmartindent spell spelllang=en_gb' "$M"
 
 # allow 'abort_unmodified' to work
 [ "$(openssl dgst -md5 -r "$M" | awk '{ print $M }')" != "$CHKSUM" ] || mv "$M.orig" "$M"
